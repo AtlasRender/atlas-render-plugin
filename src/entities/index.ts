@@ -7,4 +7,5 @@
  * All rights reserved.
  */
 
+export {default as PluginSetting} from "./PluginSetting";
 export {default as IntegerFiled} from "./IntegerField";

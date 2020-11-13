@@ -7,4 +7,7 @@
  * All rights reserved.
  */
 
-export {IntegerFiled} from "./entities";
+/// <reference path="errors/Validator.ts" />
+/// <reference path="errors/ValidationError.ts" />
+
+const validationError = new Errors.ValidationError("hello");
