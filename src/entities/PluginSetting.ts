@@ -44,21 +44,33 @@ export default class PluginSetting {
 
         const {type, name, label} = setting;
 
-        // TODO: add length check.
         if (typeof type !== "string")
             validationError.reject("type", "string", {got: typeof type});
-        if (typeof name !== "string" || name.length > 50)
+        else if (type.length > 50)
+            validationError.reject(
+                "type", // TODO: add type check.
+                "string",
+                {message: "Type is too long", status: 413}
+            );
+
+        if (typeof name !== "string")
+            validationError.reject("name", "string", {got: typeof name});
+        else if (name.length > 20)
             validationError.reject(
                 "name",
                 "string",
-                {got: typeof name}
+                {message: "Name is too long", status: 413}
             );
+
         if (typeof label !== "string" || label.length > 50)
+            validationError.reject("label", "string", {got: typeof name});
+        else if (label.length > 20)
             validationError.reject(
                 "label",
                 "string",
-                {got: typeof name}
+                {message: "Label is too long", status: 413}
             );
+
 
         if (validationError.hasErrors()) {
             throw validationError;
