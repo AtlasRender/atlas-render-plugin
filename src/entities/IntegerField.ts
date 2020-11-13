@@ -39,7 +39,7 @@ export default class IntegerField extends PluginSetting {
     constructor(setting: any) {
         let validationError: ValidationError = null;
         try {
-            super(setting);
+            super("integer", setting);
             validationError = new ValidationError("Error validating settings in IntegerField.");
         } catch (error) {
             if (error instanceof ValidationError && !error.isFatal())

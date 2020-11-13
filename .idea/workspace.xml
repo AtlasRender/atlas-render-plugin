@@ -19,8 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="904e2fbc-e10f-48d2-aa4a-3596a1773b34" name="Default Changelist" comment="[IntegerFields] Created IntegerField entity.&#10;[ValidationError] Created validation error type.&#10;[Validator] Created validation error token, called Validator.">
+    <list default="true" id="904e2fbc-e10f-48d2-aa4a-3596a1773b34" name="Default Changelist" comment="[PluginSetting] Added length check.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/IntegerField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/IntegerField.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/PluginSetting.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/PluginSetting.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +87,7 @@
       <workItem from="1605176230455" duration="3067000" />
       <workItem from="1605194351542" duration="1835000" />
       <workItem from="1605266978878" duration="5687000" />
-      <workItem from="1605273173378" duration="3335000" />
+      <workItem from="1605273173378" duration="3436000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <created>1605177248550</created>
@@ -116,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605276050919</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="[PluginSetting] Added length check.">
+      <created>1605276555086</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1605276555086</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,7 +147,8 @@
     <MESSAGE value="[Repository] Added community files." />
     <MESSAGE value="[entities] Added some entities." />
     <MESSAGE value="[IntegerFields] Created IntegerField entity.&#10;[ValidationError] Created validation error type.&#10;[Validator] Created validation error token, called Validator." />
-    <option name="LAST_COMMIT_MESSAGE" value="[IntegerFields] Created IntegerField entity.&#10;[ValidationError] Created validation error type.&#10;[Validator] Created validation error token, called Validator." />
+    <MESSAGE value="[PluginSetting] Added length check." />
+    <option name="LAST_COMMIT_MESSAGE" value="[PluginSetting] Added length check." />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605179746187">
@@ -174,11 +183,11 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2381" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605195464466" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605276053846">
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605276558104">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605179557069" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605276053846" />
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605276558104" />
     <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605179398660">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

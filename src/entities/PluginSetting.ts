@@ -32,17 +32,18 @@ export default class PluginSetting {
     /**
      * Creates an instance of PluginSetting
      * @constructor
+     * @param type - Type of the plugin setting.
      * @param setting - Setting object.
      * @throws ValidationError
      * @author Danil Andreev
      */
-    constructor(setting: any) {
+    constructor(type: string, setting: any) {
         const validationError = new ValidationError("Error validating settings in PluginSettings.");
 
         if (typeof setting !== "object" || Array.isArray(setting))
             throw new ValidationError("Fatal validation error: incorrect token.", [], true);
 
-        const {type, name, label} = setting;
+        const {name, label} = setting;
 
         if (typeof type !== "string")
             validationError.reject("type", "string", {got: typeof type});
