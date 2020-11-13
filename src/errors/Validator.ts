@@ -7,6 +7,8 @@
  * All rights reserved.
  */
 
+import ValidationError from "./ValidationError";
+
 /**
  * ValidatorOptions - options for Validator.
  * @interface
@@ -40,6 +42,11 @@ export class Validator implements ValidatorOptions {
     /**
      * expected - expected value of validated object.
      */
+    /**
+     * nested - nested items errors.
+     */
+    protected nested: ValidationError[];
+
     public readonly expected: string;
     public readonly message?: string;
     public readonly status?: number;
@@ -59,5 +66,22 @@ export class Validator implements ValidatorOptions {
         this.message = options.message;
         this.status = options.status;
         this.got = options.got;
+    }
+
+    /**
+     * getNested - returns an array of nested errors.
+     * @method
+     * @author Danil Andreev
+     */
+    public getNested(): readonly ValidationError[] {
+        return this.nested;
+    }
+
+    /**
+     * addNested - adds nested validation error to object.
+     * @param error - Error object.
+     */
+    public addNested(error: ValidationError): void {
+        this.nested.push(error);
     }
 }

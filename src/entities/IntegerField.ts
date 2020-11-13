@@ -27,7 +27,8 @@ export default class IntegerField extends FloatField {
     constructor(setting: any) {
         let validationError: ValidationError = null;
         try {
-            super(setting, "integer");
+            super(setting);
+            this.setType("integer");
             validationError = new ValidationError("Error validating settings in IntegerField.");
         } catch (error) {
             if (error instanceof ValidationError && !error.isFatal())

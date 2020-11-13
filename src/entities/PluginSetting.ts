@@ -19,7 +19,7 @@ export default class PluginSetting {
     /**
      * type - the type of a filed.
      */
-    public readonly type: string;
+    private type: string;
     /**
      * name - key value of the field.
      */
@@ -76,5 +76,27 @@ export default class PluginSetting {
         if (validationError.hasErrors()) {
             throw validationError;
         }
+
+        this.setType(type);
+        this.name = name;
+        this.label = label;
+    }
+
+    /**
+     * setType - sets the type of the field.
+     * @method
+     * @author Danil Andreev
+     */
+    protected setType(type: string): void {
+        this.type = type;
+    }
+
+    /**
+     * getType - returns a type of the field.
+     * @method
+     * @author Danil Andreev
+     */
+    public getType(): string {
+        return this.type;
     }
 }

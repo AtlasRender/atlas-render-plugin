@@ -19,12 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="904e2fbc-e10f-48d2-aa4a-3596a1773b34" name="Default Changelist" comment="[PluginSetting] Separated type in constructor params.">
-      <change afterPath="$PROJECT_DIR$/src/entities/FloatField.ts" afterDir="false" />
+    <list default="true" id="904e2fbc-e10f-48d2-aa4a-3596a1773b34" name="Default Changelist" comment="[FloatField] Added float field entity.">
+      <change afterPath="$PROJECT_DIR$/src/entities/BooleanField.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/GroupField.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entities/SeparatorField.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/FloatField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/FloatField.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/IntegerField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/IntegerField.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/PluginSetting.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/PluginSetting.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/errors/Validator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/errors/Validator.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +95,7 @@
       <workItem from="1605176230455" duration="3067000" />
       <workItem from="1605194351542" duration="1835000" />
       <workItem from="1605266978878" duration="5687000" />
-      <workItem from="1605273173378" duration="5008000" />
+      <workItem from="1605273173378" duration="8468000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <created>1605177248550</created>
@@ -136,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605276659753</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="[FloatField] Added float field entity.">
+      <created>1605278241007</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605278241007</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,7 +171,8 @@
     <MESSAGE value="[IntegerFields] Created IntegerField entity.&#10;[ValidationError] Created validation error type.&#10;[Validator] Created validation error token, called Validator." />
     <MESSAGE value="[PluginSetting] Added length check." />
     <MESSAGE value="[PluginSetting] Separated type in constructor params." />
-    <option name="LAST_COMMIT_MESSAGE" value="[PluginSetting] Separated type in constructor params." />
+    <MESSAGE value="[FloatField] Added float field entity." />
+    <option name="LAST_COMMIT_MESSAGE" value="[FloatField] Added float field entity." />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605179746187">
@@ -196,11 +207,11 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2381" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605195464466" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605276663367">
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605278244877">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605179557069" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605276663367" />
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605278244877" />
     <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605179398660">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

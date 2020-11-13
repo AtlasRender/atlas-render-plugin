@@ -37,10 +37,10 @@ export default class FloatField extends PluginSetting {
      * @throws ValidationError
      * @author Danil Andreev
      */
-    constructor(setting: any, type: "integer" | "float" = "float") {
+    constructor(setting: any) {
         let validationError: ValidationError = null;
         try {
-            super(type, setting);
+            super("float", setting);
             validationError = new ValidationError("Error validating settings in FloatField.");
         } catch (error) {
             if (error instanceof ValidationError && !error.isFatal())
@@ -53,7 +53,7 @@ export default class FloatField extends PluginSetting {
             validationError.reject("min", "float", {got: typeof setting.min});
 
         if (typeof setting.max !== "number")
-            validationError.reject("max", "float", {got: typeof setting.min});
+            validationError.reject("max", "float", {got: typeof setting.max});
         else if (!validationError.errorOn("min") && setting.min > setting.max)
             validationError.reject(
                 "max",
@@ -62,7 +62,7 @@ export default class FloatField extends PluginSetting {
             );
 
         if (typeof setting.default !== "number")
-            validationError.reject("default", "float", {got: typeof setting.min});
+            validationError.reject("default", "float", {got: typeof setting.default});
         else if (!(validationError.errorOn("min") && validationError.errorOn("max"))) {
             if (setting.default < setting.min)
                 validationError.reject(
@@ -80,5 +80,9 @@ export default class FloatField extends PluginSetting {
 
         if (validationError.hasErrors() || validationError.isFatal())
             throw validationError;
+
+        this.min = setting.min;
+        this.max = setting.max;
+        this.default = setting.default;
     }
 }
