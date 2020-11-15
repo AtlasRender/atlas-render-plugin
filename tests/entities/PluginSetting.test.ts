@@ -83,5 +83,39 @@ describe("entities->PluginSetting", () => {
         expect(result.getValidation().errorOn("name")).toBeFalsy();
     });
 
-    //TODO:  add checks on incorrect name string.
+    test("Test token with invalid name / name with restricted characters. (1sdf)", () => {
+        const token = {
+            name: "1sdf",
+            label: "I am a label",
+        };
+        let result: PluginSetting = null;
+        expect(() => result = new PluginSetting("integer", token)).not.toThrowError();
+        expect(result.isValid()).toBe(false);
+        expect(result.getValidation().errorOn("name")).toBeTruthy();
+        expect(result.getValidation().errorOn("label")).toBeFalsy();
+    });
+
+    test("Test token with invalid name / name with restricted characters. (Hello lol)", () => {
+        const token = {
+            name: "Hello lol",
+            label: "I am a label",
+        };
+        let result: PluginSetting = null;
+        expect(() => result = new PluginSetting("integer", token)).not.toThrowError();
+        expect(result.isValid()).toBe(false);
+        expect(result.getValidation().errorOn("name")).toBeTruthy();
+        expect(result.getValidation().errorOn("label")).toBeFalsy();
+    });
+
+    test("Test token with invalid name / name with restricted characters. (Hello-lol)", () => {
+        const token = {
+            name: "Hello-lol",
+            label: "I am a label",
+        };
+        let result: PluginSetting = null;
+        expect(() => result = new PluginSetting("integer", token)).not.toThrowError();
+        expect(result.isValid()).toBe(false);
+        expect(result.getValidation().errorOn("name")).toBeTruthy();
+        expect(result.getValidation().errorOn("label")).toBeFalsy();
+    });
 });

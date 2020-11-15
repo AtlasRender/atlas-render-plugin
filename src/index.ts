@@ -7,7 +7,7 @@
 * All rights reserved.
 */
 
-import {GroupField, PluginSettingsSpec} from "./entities";
+import {GroupField, PluginSetting, PluginSettingsSpec} from "./entities";
 
 const input = [
     {
@@ -35,11 +35,9 @@ const input = [
     }
 ];
 
-new GroupField(input[0]);
-
-// try {
-//     const spec = new PluginSettingsSpec(input);
-//     console.log(spec);
-// } catch (error) {
-//     console.error(error.message, error);
-// }
+try {
+    const spec = new PluginSettingsSpec(input);
+    console.log(spec);
+} catch (error) {
+    console.error(error.message, error);
+}

@@ -27,6 +27,10 @@ export default class PluginSetting {
         "group",
         "separator",
     ];
+    /**
+     * nameRegExp - regular expression for setting name correctness checks.
+     */
+    public static readonly nameRegExp = new RegExp("^[a-zA-Z_$][a-zA-Z_$0-9]*$");
 
     /**
      * type - the type of a filed.
@@ -42,6 +46,19 @@ export default class PluginSetting {
     public readonly label: string;
 
     protected validation: ValidationError;
+
+    /**
+     * validateName - function, designed to validate setting name.
+     * @method
+     * @param input - Input data. Is should be correct string to get true.
+     * @author Danil Andreev
+     */
+    public static validateName(input: any): boolean {
+        if (typeof input !== "string")
+            return false;
+        return PluginSetting.nameRegExp.test(input);
+    }
+
 
     /**
      * Creates an instance of PluginSetting
@@ -68,7 +85,17 @@ export default class PluginSetting {
             this.validation.reject(
                 "name",
                 "string",
-                {message: "Name is too long", status: 413}
+                {message: "Name is too long.", status: 413}
+            );
+        else if (!PluginSetting.validateName(name))
+            this.validation.reject(
+                "name",
+                "string",
+                {
+                    message: "Name contains restricted characters.",
+                    status: 414,
+                    got: name,
+                }
             );
 
         if (typeof label !== "string")
