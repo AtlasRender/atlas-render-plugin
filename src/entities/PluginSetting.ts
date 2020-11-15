@@ -29,6 +29,8 @@ export default class PluginSetting {
      */
     public readonly label: string;
 
+    protected validation: ValidationError;
+
     /**
      * Creates an instance of PluginSetting
      * @constructor
@@ -38,7 +40,8 @@ export default class PluginSetting {
      * @author Danil Andreev
      */
     constructor(type: string, setting: any) {
-        const validationError = new ValidationError("Error validating settings in PluginSettings.");
+        //const validationError = new ValidationError("Error validating settings in PluginSettings.");
+        this.validation = new ValidationError("Validation error");
 
         if (typeof setting !== "object" || Array.isArray(setting))
             throw new ValidationError("Fatal validation error: incorrect token.", [], true);
@@ -46,36 +49,31 @@ export default class PluginSetting {
         const {name, label} = setting;
 
         if (typeof type !== "string")
-            validationError.reject("type", "string", {got: typeof type});
+            this.validation.reject("type", "string", {got: typeof type});
         else if (type.length > 50)
-            validationError.reject(
+            this.validation.reject(
                 "type", // TODO: add type check.
                 "string",
                 {message: "Type is too long", status: 413}
             );
 
         if (typeof name !== "string")
-            validationError.reject("name", "string", {got: typeof name});
+            this.validation.reject("name", "string", {got: typeof name});
         else if (name.length > 20)
-            validationError.reject(
+            this.validation.reject(
                 "name",
                 "string",
                 {message: "Name is too long", status: 413}
             );
 
         if (typeof label !== "string" || label.length > 50)
-            validationError.reject("label", "string", {got: typeof name});
+            this.validation.reject("label", "string", {got: typeof name});
         else if (label.length > 20)
-            validationError.reject(
+            this.validation.reject(
                 "label",
                 "string",
                 {message: "Label is too long", status: 413}
             );
-
-
-        if (validationError.hasErrors()) {
-            throw validationError;
-        }
 
         this.setType(type);
         this.name = name;
@@ -98,5 +96,23 @@ export default class PluginSetting {
      */
     public getType(): string {
         return this.type;
+    }
+
+    /**
+     * isValid - if validation has no errors will return true, else - false.
+     * @method
+     * @author Danil Andreev
+     */
+    isValid(): boolean {
+        return !this.validation.hasErrors();
+    }
+
+    /**
+     * getValidation - returns validation error object.
+     * @method
+     * @author Danil Andreev
+     */
+    public getValidation(): ValidationError {
+        return this.validation;
     }
 }

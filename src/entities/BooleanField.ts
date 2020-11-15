@@ -30,21 +30,11 @@ export default class BooleanField extends PluginSetting {
      * @author Danil Andreev
      */
     constructor(setting: any, type: "boolean" = "boolean") {
-        let validationError: ValidationError = null;
-        try {
-            super(type, setting);
-            validationError = new ValidationError("Error validating settings in BooleanField.");
-        } catch (error) {
-            if (error instanceof ValidationError && !error.isFatal())
-                validationError = error;
-            else
-                throw error;
-        }
+        super(type, setting);
 
         if (typeof setting.default !== "boolean")
             validationError.reject("default", "boolean", {got: typeof setting.default});
 
-        if (validationError.hasErrors() || validationError.isFatal())
-            throw validationError;
+        this.default = setting.default;
     }
 }

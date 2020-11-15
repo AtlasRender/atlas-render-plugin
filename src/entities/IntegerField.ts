@@ -25,39 +25,26 @@ export default class IntegerField extends FloatField {
      * @author Danil Andreev
      */
     constructor(setting: any) {
-        let validationError: ValidationError = null;
-        try {
-            super(setting);
-            this.setType("integer");
-            validationError = new ValidationError("Error validating settings in IntegerField.");
-        } catch (error) {
-            if (error instanceof ValidationError && !error.isFatal())
-                validationError = error;
-            else
-                throw error;
-        }
+        super(setting);
+        this.setType("integer");
 
-        if (!validationError.errorOn("min") && !_.isInteger(setting.min))
-            validationError.reject(
+        if (!this.validation.errorOn("min") && !_.isInteger(setting.min))
+            this.validation.reject(
                 "min",
                 "integer",
                 {message: "Min value must be integer type.", status: 400}
             );
-        if (!validationError.errorOn("max") && !_.isInteger(setting.max))
-            validationError.reject(
+        if (!this.validation.errorOn("max") && !_.isInteger(setting.max))
+            this.validation.reject(
                 "mex",
                 "integer",
                 {message: "Max value must be integer type.", status: 400}
             );
-        if (!validationError.errorOn("default") && !_.isInteger(setting.default))
-            validationError.reject(
+        if (!this.validation.errorOn("default") && !_.isInteger(setting.default))
+            this.validation.reject(
                 "default",
                 "integer",
                 {message: "Default value must be integer type.", status: 400}
             );
-
-
-        if (validationError.hasErrors() || validationError.isFatal())
-            throw validationError;
     }
 }

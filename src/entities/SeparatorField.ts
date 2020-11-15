@@ -18,11 +18,6 @@ import ValidationError from "../errors/ValidationError";
  */
 export default class SeparatorField extends PluginSetting {
     /**
-     * default - default value.
-     */
-    public readonly default: boolean;
-
-    /**
      * Creates an instance of SeparatorField.
      * @param setting - Object with payload to construct entity.
      * @throws ValidationError

@@ -38,48 +38,36 @@ export default class FloatField extends PluginSetting {
      * @author Danil Andreev
      */
     constructor(setting: any) {
-        let validationError: ValidationError = null;
-        try {
-            super("float", setting);
-            validationError = new ValidationError("Error validating settings in FloatField.");
-        } catch (error) {
-            if (error instanceof ValidationError && !error.isFatal())
-                validationError = error;
-            else
-                throw error;
-        }
+        super("float", setting);
 
         if (typeof setting.min !== "number")
-            validationError.reject("min", "float", {got: typeof setting.min});
+            this.validation.reject("min", "float", {got: typeof setting.min});
 
         if (typeof setting.max !== "number")
-            validationError.reject("max", "float", {got: typeof setting.max});
-        else if (!validationError.errorOn("min") && setting.min > setting.max)
-            validationError.reject(
+            this.validation.reject("max", "float", {got: typeof setting.max});
+        else if (!this.validation.errorOn("min") && setting.min > setting.max)
+            this.validation.reject(
                 "max",
                 "float",
                 {message: "Max value can not be less than min.", status: 400}
             );
 
         if (typeof setting.default !== "number")
-            validationError.reject("default", "float", {got: typeof setting.default});
-        else if (!(validationError.errorOn("min") && validationError.errorOn("max"))) {
+            this.validation.reject("default", "float", {got: typeof setting.default});
+        else if (!(this.validation.errorOn("min") && this.validation.errorOn("max"))) {
             if (setting.default < setting.min)
-                validationError.reject(
+                this.validation.reject(
                     "default",
                     "float",
                     {message: "Default value can not be less than min.", status: 400}
                 );
             if (setting.default > setting.max)
-                validationError.reject(
+                this.validation.reject(
                     "default",
                     "float",
                     {message: "Default value can not be higher than max.", status: 400}
                 );
         }
-
-        if (validationError.hasErrors() || validationError.isFatal())
-            throw validationError;
 
         this.min = setting.min;
         this.max = setting.max;

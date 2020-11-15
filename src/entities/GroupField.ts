@@ -29,21 +29,11 @@ export default class GroupField extends PluginSetting {
      * @author Danil Andreev
      */
     constructor(setting: any) {
-        let validationError: ValidationError = null;
-        try {
-            super("group", setting);
-            validationError = new ValidationError("Error validating settings in GroupField.");
-        } catch (error) {
-            if (error instanceof ValidationError && !error.isFatal())
-                validationError = error;
-            else
-                throw error;
-        }
+        super("group", setting);
 
         if (!Array.isArray(setting.nested))
             validationError.reject("nested", "array", {got: typeof setting.default});
 
-        if (validationError.hasErrors() || validationError.isFatal())
-            throw validationError;
+        this.nested = setting.nested;
     }
 }
