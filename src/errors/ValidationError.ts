@@ -8,7 +8,9 @@
  */
 
 
-import {Validator, ValidatorOptions} from "./Validator";
+import ValidatorOptionsExtended from "../interfaces/ValidatorOptionsExtended";
+import Validator from "./Validator";
+
 
 /**
  * ValidationError - validation error for plugin setting.
@@ -110,7 +112,7 @@ export default class ValidationError extends TypeError {
      * @param options - Options for more detailed setup.
      * @author Danil Andreev
      */
-    reject(name: string, expected: string, options: ValidatorOptions): ValidationError {
+    reject(name: string, expected: string, options: ValidatorOptionsExtended): ValidationError {
         if (!this.validation.some((candidate: Validator) => candidate.key === name))
             this.validation.push(new Validator(name, expected, options));
         return this;

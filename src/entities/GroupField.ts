@@ -9,6 +9,7 @@
 
 import PluginSetting from "./PluginSetting";
 import ValidationError from "../errors/ValidationError";
+import {PluginSettingsSpec} from "./index";
 
 
 /**
@@ -34,6 +35,13 @@ export default class GroupField extends PluginSetting {
         if (!Array.isArray(setting.nested))
             this.validation.reject("nested", "array", {got: typeof setting.default});
 
-        this.nested = setting.nested;
+        this.nested = [];
+        try {
+            this.nested = new PluginSettingsSpec(setting.nested).settings;
+        } catch (error) {
+            if (!(error instanceof ValidationError))
+                throw error;
+            this.validation.reject("nested", "array", {nested: error.getNested()});
+        }
     }
 }

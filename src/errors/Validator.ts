@@ -8,33 +8,16 @@
  */
 
 import ValidationError from "./ValidationError";
+import {ValidatorOptions} from "../interfaces/ValidatorOptions";
+import ValidatorOptionsExtended from "../interfaces/ValidatorOptionsExtended";
 
-/**
- * ValidatorOptions - options for Validator.
- * @interface
- * @author Danil Andreev
- */
-export interface ValidatorOptions {
-    /**
-     * message - unnecessary message.
-     */
-    readonly message?: string;
-    /**
-     * status - validation status.
-     */
-    readonly status?: number;
-    /**
-     * got - value, got as argument in validated object.
-     */
-    readonly got?: any;
-}
 
 /**
  * Validator - class for declaring plugin setting validation error token.
  * @class
  * @author Danil Andreev
  */
-export class Validator implements ValidatorOptions {
+export default class Validator implements ValidatorOptions {
     /**
      * key - validated object key.
      */
@@ -42,15 +25,11 @@ export class Validator implements ValidatorOptions {
     /**
      * expected - expected value of validated object.
      */
-    /**
-     * nested - nested items errors.
-     */
-    protected nested: ValidationError[];
-
     public readonly expected: string;
     public readonly message?: string;
     public readonly status?: number;
     public readonly got?: any;
+    protected nested: ValidationError[];
 
     /**
      * Creates an instance of Validator.
@@ -60,12 +39,13 @@ export class Validator implements ValidatorOptions {
      * @param options - Options for more detailed setup.
      * @author Danil Andreev
      */
-    constructor(key: string, expected: string, options?: ValidatorOptions) {
+    constructor(key: string, expected: string, options?: ValidatorOptionsExtended) {
         this.key = key;
         this.expected = expected;
         this.message = options.message;
         this.status = options.status;
         this.got = options.got;
+        this.nested = Array.isArray(options.nested) ? [...options.nested] : [];
     }
 
     /**
@@ -81,7 +61,8 @@ export class Validator implements ValidatorOptions {
      * addNested - adds nested validation error to object.
      * @param error - Error object.
      */
-    public addNested(error: ValidationError): void {
+    public addNested(error: ValidationError): Validator {
         this.nested.push(error);
+        return this;
     }
 }

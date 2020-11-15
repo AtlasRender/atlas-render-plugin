@@ -44,7 +44,7 @@ describe("entities->PluginSetting", () => {
             label: "A basic setting",
         };
         let result: PluginSetting = null;
-        expect(() => result = new PluginSetting("integer", token)).not.toThrowError(ValidationError);
+        expect(() => result = new PluginSetting("integer", token)).not.toThrowError();
         expect(result.isValid()).toBe(false);
         expect(result.getValidation().errorOn("name")).toBeTruthy();
         expect(result.getValidation().errorOn("label")).toBeFalsy();
@@ -55,7 +55,7 @@ describe("entities->PluginSetting", () => {
             name: "basicSetting",
         };
         let result: PluginSetting = null;
-        expect(() => result = new PluginSetting("integer", token)).not.toThrowError(ValidationError);
+        expect(() => result = new PluginSetting("integer", token)).not.toThrowError();
         expect(result.isValid()).toBe(false);
         expect(result.getValidation().errorOn("label")).toBeTruthy();
         expect(result.getValidation().errorOn("name")).toBeFalsy();
@@ -65,7 +65,7 @@ describe("entities->PluginSetting", () => {
         const token = {
         };
         let result: PluginSetting = null;
-        expect(() => result = new PluginSetting("integer", token)).not.toThrowError(ValidationError);
+        expect(() => result = new PluginSetting("integer", token)).not.toThrowError();
         expect(result.isValid()).toBe(false);
         expect(result.getValidation().errorOn("label")).toBeTruthy();
         expect(result.getValidation().errorOn("name")).toBeTruthy();
@@ -77,7 +77,7 @@ describe("entities->PluginSetting", () => {
             label: "I am string more than 25 chars",
         };
         let result: PluginSetting = null;
-        expect(() => result = new PluginSetting("integer", token)).not.toThrowError(ValidationError);
+        expect(() => result = new PluginSetting("integer", token)).not.toThrowError();
         expect(result.isValid()).toBe(false);
         expect(result.getValidation().errorOn("label")).toBeTruthy();
         expect(result.getValidation().errorOn("name")).toBeFalsy();
