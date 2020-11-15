@@ -14,3 +14,4 @@ export {default as SeparatorField} from "./SeparatorField";
 export {default as BooleanField} from "./BooleanField";
 export {default as GroupField} from "./GroupField";
 export {default as PluginSettingsSpec} from "./PluginSettingsSpec";
+export {default as StringField} from "./StringField";

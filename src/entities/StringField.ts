@@ -19,11 +19,11 @@ import * as _ from "lodash";
  */
 export default class StringField extends PluginSetting {
     /**
-     * min - minimal value.
+     * min - minimal string length.
      */
     public readonly min: number;
     /**
-     * max - maximal value.
+     * max - maximal string length.
      */
     public readonly max: number;
     /**
@@ -46,7 +46,6 @@ export default class StringField extends PluginSetting {
         if (typeof setting.max !== "number")
             this.validation.reject("max", "integer", {got: typeof setting.max});
         else if (!this.validation.errorOn("min") && setting.min > setting.max)
-        if (setting.min > setting.max)
             this.validation.reject(
                 "max",
                 "integer",
@@ -54,19 +53,33 @@ export default class StringField extends PluginSetting {
             );
 
 
-        if (!this.validation.errorOn("min") && !this.validation.errorOn("max"))
+        if (!this.validation.errorOn("min") && !this.validation.errorOn("max")) {
             if (!_.isInteger(setting.min))
                 this.validation.reject(
                     "min",
                     "integer",
                     {message: "Min value can not be float.", status: 400}
                 );
-            else if (!_.isInteger(setting.max))
+            if (!_.isInteger(setting.max))
                 this.validation.reject(
                     "max",
                     "integer",
                     {message: "Max value can not be float.", status: 400}
                 );
+            if (setting.min < 0)
+                this.validation.reject(
+                    "min",
+                    "integer",
+                    {got: typeof  setting.min, message: "Min length can not be less than zero", status: 401}
+                );
+            if (setting.max < 0)
+                this.validation.reject(
+                    "max",
+                    "integer",
+                    {got: typeof  setting.min, message: "Max length can not be less than zero", status: 401}
+                );
+        }
+
 
         if (typeof setting.default !== "string")
             this.validation.reject("default", "string", {got: typeof setting.default});

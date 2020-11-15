@@ -42,7 +42,6 @@ describe("entities->GroupField", () => {
         expect(result.label).toBe(token.label);
         expect(result.getType()).toBe("group");
         for (const nested of result.nested) {
-            console.log(nested);
             expect(nested).toBeInstanceOf(PluginSetting);
         }
     });
