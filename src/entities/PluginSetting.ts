@@ -17,6 +17,18 @@ import ValidationError from "../errors/ValidationError";
  */
 export default class PluginSetting {
     /**
+     * types - available setting types.
+     */
+    public static readonly types: string[] = [
+        "float",
+        "integer",
+        "string",
+        "boolean",
+        "group",
+        "separator",
+    ];
+
+    /**
      * type - the type of a filed.
      */
     private type: string;
@@ -40,7 +52,6 @@ export default class PluginSetting {
      * @author Danil Andreev
      */
     constructor(type: string, setting: any) {
-        //const validationError = new ValidationError("Error validating settings in PluginSettings.");
         this.validation = new ValidationError("Validation error");
 
         if (typeof setting !== "object" || Array.isArray(setting))
@@ -48,14 +59,8 @@ export default class PluginSetting {
 
         const {name, label} = setting;
 
-        if (typeof type !== "string")
-            this.validation.reject("type", "string", {got: typeof type});
-        else if (type.length > 50)
-            this.validation.reject(
-                "type", // TODO: add type check.
-                "string",
-                {message: "Type is too long", status: 413}
-            );
+        if (!PluginSetting.types.includes(type))
+            throw new ValidationError("Incorrect setting type.", undefined, true);
 
         if (typeof name !== "string")
             this.validation.reject("name", "string", {got: typeof name});
