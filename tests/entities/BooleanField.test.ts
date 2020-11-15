@@ -10,20 +10,22 @@
 import {BooleanField} from "../../src/entities";
 import ValidationError from "../../src/errors/ValidationError";
 
+
 describe("entities->BooleanField", () => {
     test("Test correct token.", () => {
         const token = {
-            name: "bool",
+            name: "booleanField",
             label: "Boolean field",
             default: false,
         };
         let result: BooleanField = null;
         expect(() => result = new BooleanField(token)).not.toThrowError();
+        expect(result).toBeInstanceOf(BooleanField);
         expect(result.isValid()).toBe(true);
-        expect(result.name).toBe("bool");
-        expect(result.label).toBe("Boolean field");
+        expect(result.name).toBe(token.name);
+        expect(result.label).toBe(token.label);
+        expect(result.default).toBe(token.default);
         expect(result.getType()).toBe("boolean");
-        expect(result.default).toBe(false);
     });
 
     test("Test token without default.", () => {

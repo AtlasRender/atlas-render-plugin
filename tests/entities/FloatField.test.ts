@@ -9,6 +9,7 @@
 
 import {FloatField} from "../../src/entities";
 
+
 describe("entities->FloatField", () => {
     test("Test correct token.", () => {
         const token = {
@@ -20,6 +21,7 @@ describe("entities->FloatField", () => {
         };
         let result: FloatField = null;
         expect(() => result = new FloatField(token)).not.toThrowError();
+        expect(result).toBeInstanceOf(FloatField);
         expect(result.isValid()).toBe(true);
         expect(result.min).toBe(token.min);
         expect(result.max).toBe(token.max);

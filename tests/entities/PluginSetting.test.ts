@@ -10,6 +10,7 @@
 import {PluginSetting} from "../../src/entities";
 import ValidationError from "../../src/errors/ValidationError";
 
+
 describe("entities->PluginSetting", () => {
     test("Test correct token.", () => {
         const token = {
@@ -18,6 +19,7 @@ describe("entities->PluginSetting", () => {
         };
         let result: PluginSetting = null;
         expect(() => result = new PluginSetting("float", token)).not.toThrowError();
+        expect(result).toBeInstanceOf(PluginSetting);
         expect(result.isValid()).toBe(true);
         expect(result.name).toBe(token.name);
         expect(result.label).toBe(token.label);
@@ -72,7 +74,7 @@ describe("entities->PluginSetting", () => {
     test("Test token without extra log label.", () => {
         const token = {
             name: "basicSetting",
-            label: "I am string more than 50 characters in length, yeah!",
+            label: "I am string more than 25 chars",
         };
         let result: PluginSetting = null;
         expect(() => result = new PluginSetting("integer", token)).not.toThrowError(ValidationError);

@@ -71,13 +71,13 @@ export default class PluginSetting {
                 {message: "Name is too long", status: 413}
             );
 
-        if (typeof label !== "string" || label.length > 50)
+        if (typeof label !== "string")
             this.validation.reject("label", "string", {got: typeof name});
-        else if (label.length > 20)
+        else if (label.length > 25)
             this.validation.reject(
                 "label",
                 "string",
-                {message: "Label is too long", status: 413}
+                {message: "Label is too long", status: 413, got: label}
             );
 
         this.setType(type);

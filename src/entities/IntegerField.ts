@@ -36,7 +36,7 @@ export default class IntegerField extends FloatField {
             );
         if (!this.validation.errorOn("max") && !_.isInteger(setting.max))
             this.validation.reject(
-                "mex",
+                "max",
                 "integer",
                 {message: "Max value must be integer type.", status: 400}
             );
