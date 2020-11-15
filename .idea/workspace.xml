@@ -19,8 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="904e2fbc-e10f-48d2-aa4a-3596a1773b34" name="Default Changelist" comment="[GroupField] Added tests.">
-      <change afterPath="$PROJECT_DIR$/tests/entities/SeparatorField.test.ts" afterDir="false" />
+    <list default="true" id="904e2fbc-e10f-48d2-aa4a-3596a1773b34" name="Default Changelist" comment="[SeparatorField] Added tests.">
+      <change afterPath="$PROJECT_DIR$/tests/entities/PluginSettingsSpec.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +113,7 @@
       <workItem from="1605266978878" duration="5687000" />
       <workItem from="1605273173378" duration="8468000" />
       <workItem from="1605397202500" duration="596000" />
-      <workItem from="1605444691437" duration="15312000" />
+      <workItem from="1605444691437" duration="16778000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <created>1605177248550</created>
@@ -206,7 +206,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605468594706</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="[SeparatorField] Added tests.">
+      <created>1605468812780</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1605468812780</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,7 +245,8 @@
     <MESSAGE value="[FloatFiled] Added tests." />
     <MESSAGE value="[IntegerFiled] Added tests." />
     <MESSAGE value="[GroupField] Added tests." />
-    <option name="LAST_COMMIT_MESSAGE" value="[GroupField] Added tests." />
+    <MESSAGE value="[SeparatorField] Added tests." />
+    <option name="LAST_COMMIT_MESSAGE" value="[SeparatorField] Added tests." />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605179746187">
@@ -325,10 +333,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2381" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605195464466" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605468596531">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605468815551">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605468596531" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605468815551" />
     <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605278244877" />
     <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605444762292">
       <screen x="0" y="0" width="1920" height="1040" />
