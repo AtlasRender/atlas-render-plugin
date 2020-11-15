@@ -9,14 +9,15 @@
 
 import PluginSetting from "./PluginSetting";
 import ValidationError from "../errors/ValidationError";
+import * as _ from "lodash";
 
 
 /**
- * FloatField - class, designed to create integer plugin setting.
+ * StringField - class, designed to create string plugin setting.
  * @class
  * @author Danil Andreev
  */
-export default class FloatField extends PluginSetting {
+export default class StringField extends PluginSetting {
     /**
      * min - minimal value.
      */
@@ -28,42 +29,58 @@ export default class FloatField extends PluginSetting {
     /**
      * default - default value.
      */
-    public readonly default: number;
+    public readonly default: string;
 
     /**
-     * Creates an instance of FloatField.
+     * Creates an instance of StringField.
      * @param setting - Object with payload to construct entity.
      * @throws ValidationError
      * @author Danil Andreev
      */
     constructor(setting: any) {
-        super("float", setting);
+        super("string", setting);
 
         if (typeof setting.min !== "number")
-            this.validation.reject("min", "float", {got: typeof setting.min});
+            this.validation.reject("min", "integer", {got: typeof setting.min});
 
         if (typeof setting.max !== "number")
-            this.validation.reject("max", "float", {got: typeof setting.max});
+            this.validation.reject("max", "integer", {got: typeof setting.max});
         else if (!this.validation.errorOn("min") && setting.min > setting.max)
+        if (setting.min > setting.max)
             this.validation.reject(
                 "max",
-                "float",
+                "integer",
                 {message: "Max value can not be less than min.", status: 400}
             );
 
-        if (typeof setting.default !== "number")
-            this.validation.reject("default", "float", {got: typeof setting.default});
+
+        if (!this.validation.errorOn("min") && !this.validation.errorOn("max"))
+            if (!_.isInteger(setting.min))
+                this.validation.reject(
+                    "min",
+                    "integer",
+                    {message: "Min value can not be float.", status: 400}
+                );
+            else if (!_.isInteger(setting.max))
+                this.validation.reject(
+                    "max",
+                    "integer",
+                    {message: "Max value can not be float.", status: 400}
+                );
+
+        if (typeof setting.default !== "string")
+            this.validation.reject("default", "string", {got: typeof setting.default});
         else if (!(this.validation.errorOn("min") && this.validation.errorOn("max"))) {
-            if (setting.default < setting.min)
+            if (setting.default.length < setting.min)
                 this.validation.reject(
                     "default",
-                    "float",
+                    "string",
                     {message: "Default value can not be less than min.", status: 400}
                 );
-            if (setting.default > setting.max)
+            if (setting.default.length > setting.max)
                 this.validation.reject(
                     "default",
-                    "float",
+                    "string",
                     {message: "Default value can not be higher than max.", status: 400}
                 );
         }
