@@ -91,7 +91,7 @@ export default class ValidationError extends TypeError {
      * @author Danil Andreev
      */
     public hasErrors(): boolean {
-        return !!this.validation.length || !!this.fatalError;
+        return !!this.validation.length || !!this.fatalError || !!this.nested.length;
     }
 
     /**
@@ -112,7 +112,7 @@ export default class ValidationError extends TypeError {
      * @param options - Options for more detailed setup.
      * @author Danil Andreev
      */
-    reject(name: string, expected: string, options: ValidatorOptionsExtended): ValidationError {
+    reject(name: string, expected: string, options?: ValidatorOptionsExtended): ValidationError {
         if (!this.validation.some((candidate: Validator) => candidate.key === name))
             this.validation.push(new Validator(name, expected, options));
         return this;

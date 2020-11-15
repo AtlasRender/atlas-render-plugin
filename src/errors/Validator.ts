@@ -39,7 +39,7 @@ export default class Validator implements ValidatorOptions {
      * @param options - Options for more detailed setup.
      * @author Danil Andreev
      */
-    constructor(key: string, expected: string, options?: ValidatorOptionsExtended) {
+    constructor(key: string, expected: string, options: ValidatorOptionsExtended = {}) {
         this.key = key;
         this.expected = expected;
         this.message = options.message;

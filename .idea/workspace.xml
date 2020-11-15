@@ -19,12 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="904e2fbc-e10f-48d2-aa4a-3596a1773b34" name="Default Changelist" comment="[StringField] Created.">
-      <change afterPath="$PROJECT_DIR$/tests/entities/StringField.test.ts" afterDir="false" />
+    <list default="true" id="904e2fbc-e10f-48d2-aa4a-3596a1773b34" name="Default Changelist" comment="[StringField] Added tests.">
+      <change afterPath="$PROJECT_DIR$/tests/errors/ValidationError.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/errors/Validator.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/StringField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/StringField.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/entities/GroupField.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/entities/GroupField.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/errors/ValidationError.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/errors/ValidationError.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/errors/Validator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/errors/Validator.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +119,7 @@
       <workItem from="1605273173378" duration="8468000" />
       <workItem from="1605397202500" duration="596000" />
       <workItem from="1605444691437" duration="17327000" />
-      <workItem from="1605471700043" duration="2081000" />
+      <workItem from="1605471700043" duration="3159000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <created>1605177248550</created>
@@ -233,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605471251213</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="[StringField] Added tests.">
+      <created>1605478312985</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1605478312985</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,7 +275,8 @@
     <MESSAGE value="[SeparatorField] Added tests." />
     <MESSAGE value="[PluginSettingsSpec] Added tests." />
     <MESSAGE value="[StringField] Created." />
-    <option name="LAST_COMMIT_MESSAGE" value="[StringField] Created." />
+    <MESSAGE value="[StringField] Added tests." />
+    <option name="LAST_COMMIT_MESSAGE" value="[StringField] Added tests." />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605471815609">
@@ -355,10 +363,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2381" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605195464466" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605471252912">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605478321331">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605471252912" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605478321331" />
     <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605278244877" />
     <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605444762292">
       <screen x="0" y="0" width="1920" height="1040" />
