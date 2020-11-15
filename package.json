@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "yarn ts-node"
+    "start": "ts-node",
+    "test": "jest --detectOpenHandles",
+    "build": "tsc"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.12.1",

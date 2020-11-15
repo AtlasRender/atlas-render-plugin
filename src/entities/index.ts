@@ -8,8 +8,9 @@
  */
 
 export {default as PluginSetting} from "./PluginSetting";
-export {default as IntegerFiled} from "./IntegerField";
+export {default as IntegerField} from "./IntegerField";
 export {default as FloatField} from "./FloatField";
 export {default as SeparatorField} from "./SeparatorField";
 export {default as BooleanField} from "./BooleanField";
 export {default as GroupField} from "./GroupField";
+export {default as PluginSettingsSpec} from "./PluginSettingsSpec";

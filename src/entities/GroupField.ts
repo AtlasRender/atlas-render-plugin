@@ -32,7 +32,7 @@ export default class GroupField extends PluginSetting {
         super("group", setting);
 
         if (!Array.isArray(setting.nested))
-            validationError.reject("nested", "array", {got: typeof setting.default});
+            this.validation.reject("nested", "array", {got: typeof setting.default});
 
         this.nested = setting.nested;
     }

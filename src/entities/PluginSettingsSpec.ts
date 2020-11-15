@@ -8,8 +8,14 @@
  */
 
 import ValidationError from "../errors/ValidationError";
-import {BooleanField, FloatField, GroupField, PluginSetting, SeparatorField} from "./index";
-import IntegerField from "./IntegerField";
+import {
+    BooleanField,
+    FloatField,
+    GroupField,
+    PluginSetting,
+    SeparatorField,
+    IntegerField
+} from "./index";
 
 
 /**
@@ -44,10 +50,13 @@ export default class PluginSettingsSpec {
                 return result;
             } catch (error) {
                 if (!(error instanceof ValidationError))
-                    throw error;!
+                    throw error;
                 errors.push(error);
             }
         });
+
+        if (errors.length)
+            throw new ValidationError("Validation error on input object.").addNested(errors);
     }
 
     /**

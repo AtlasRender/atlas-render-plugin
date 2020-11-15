@@ -27,6 +27,12 @@ export default class ValidationError extends TypeError {
     protected fatalError: boolean;
 
     /**
+     * nested - nested errors.
+     * @protected
+     */
+    protected nested: ValidationError[];
+
+    /**
      * Creates an instance of SettingsValidationError
      * @param message - String message.
      * @param validation - Validation map object.
@@ -37,6 +43,7 @@ export default class ValidationError extends TypeError {
         super(message);
         this.validation = validation;
         this.fatalError = !!isFatal;
+        this.nested = [];
     }
 
     /**
@@ -49,12 +56,22 @@ export default class ValidationError extends TypeError {
     }
 
     /**
+     * getNested - method for getting nested errors.
+     * @method
+     * @author Danil Andreev
+     */
+    public getNested(): readonly ValidationError[] {
+        return this.nested;
+    }
+
+    /**
      * failValidation - function, designed to fail validation with fatal error.
      * @method
      * @author Danil Andreev
      */
-    failValidation(): void {
+    failValidation(): ValidationError {
         this.fatalError = true;
+        return this;
     }
 
     /**
@@ -93,10 +110,17 @@ export default class ValidationError extends TypeError {
      * @param options - Options for more detailed setup.
      * @author Danil Andreev
      */
-    reject(name: string, expected: string, options: ValidatorOptions): boolean {
-        if (this.validation.some((candidate: Validator) => candidate.key === name))
-            return false;
-        this.validation.push(new Validator(name, expected, options));
-        return true;
+    reject(name: string, expected: string, options: ValidatorOptions): ValidationError {
+        if (!this.validation.some((candidate: Validator) => candidate.key === name))
+            this.validation.push(new Validator(name, expected, options));
+        return this;
+    }
+
+    addNested(error: ValidationError | ValidationError[]): ValidationError {
+        if (Array.isArray(error))
+            this.nested = this.nested.concat(error);
+        else
+            this.nested.push(error);
+        return this;
     }
 }

@@ -33,7 +33,7 @@ export default class BooleanField extends PluginSetting {
         super(type, setting);
 
         if (typeof setting.default !== "boolean")
-            validationError.reject("default", "boolean", {got: typeof setting.default});
+            this.validation.reject("default", "boolean", {got: typeof setting.default});
 
         this.default = setting.default;
     }
