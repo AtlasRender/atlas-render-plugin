@@ -45,6 +45,7 @@ describe("entities->SettingsPayload", () => {
                     max: 50,
                     default: "Hello",
                     id: 3,
+                    nullable: true,
                 },
                 {
                     type: "boolean",
@@ -68,7 +69,7 @@ describe("entities->SettingsPayload", () => {
         }
     });
 
-    test("Test with correct payload", () => {
+    test("Test with correct payload.", () => {
         let result: SettingsPayload<PayloadFields> = null;
         expect(() => result = new SettingsPayload<PayloadFields>(spec, token)).not.toThrowError();
         expect(result).toBeInstanceOf(SettingsPayload);
@@ -77,10 +78,16 @@ describe("entities->SettingsPayload", () => {
         expect(result.payload.groupVal.boolVal).toBe(token.groupVal.boolVal);
     });
 
-    test("Test with incorrect payload", () => {
+    test("Test with incorrect payload.", () => {
         token.intVal = "hello";
         let result: SettingsPayload<PayloadFields> = null;
         expect(() => result = new SettingsPayload<PayloadFields>(spec, token)).toThrowError(ValidationError);
+    });
+
+    test("Test with correct payload with null strVal.", () => {
+        token.strVal = null;
+        let result: SettingsPayload<PayloadFields> = null;
+        expect(() => result = new SettingsPayload<PayloadFields>(spec, token)).not.toThrowError();
     });
 
     test("Test validation trace on incorrect payload. (1)", () => {

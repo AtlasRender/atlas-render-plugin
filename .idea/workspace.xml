@@ -20,17 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="904e2fbc-e10f-48d2-aa4a-3596a1773b34" name="Default Changelist" comment="[Settings] Made some params unnecessary.">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/deploy-to-npm-ang-gh-packages.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interfaces/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_11_2020_19_53__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_11_2020_19_53__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/errors/ValidationError.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/errors/ValidationError.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/errors/Validator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/errors/Validator.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/ValidationErrorOptions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/ValidationErrorOptions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/ValidatorOptions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/ValidatorOptions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/ValidatorOptionsExtended.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/ValidatorOptionsExtended.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/FloatField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/FloatField.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/PluginSetting.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/PluginSetting.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/StringField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/StringField.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/entities/SettingsPayload.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/entities/SettingsPayload.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,13 +76,13 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\onepl\WebstormProjects\atlas-render-plugin\src\Errors" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Projects\atlas-render-plugin\tests\entities" />
       <recent name="D:\Projects\atlas-render-plugin\src\entities" />
       <recent name="C:\Users\onepl\WebstormProjects\atlas-render-plugin\src\entities" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\onepl\WebstormProjects\atlas-render-plugin\src\Errors" />
     </key>
   </component>
   <component name="RunManager" selected="Jest.Test with Jest">
@@ -361,29 +356,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605450992602" />
-    <state width="375" height="293" key="Git.Branch.Popup" timestamp="1605552331472">
+    <state width="385" height="303" key="Git.Branch.Popup" timestamp="1605555037748">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="375" height="293" key="Git.Branch.Popup/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605552331472" />
-    <state width="1877" height="371" key="GridCell.Tab.0.bottom" timestamp="1605552290114">
+    <state width="385" height="303" key="Git.Branch.Popup/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605555037748" />
+    <state width="1877" height="371" key="GridCell.Tab.0.bottom" timestamp="1605555485424">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="371" key="GridCell.Tab.0.bottom/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605552290114" />
+    <state width="1877" height="371" key="GridCell.Tab.0.bottom/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605555485424" />
     <state width="1899" height="342" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605542832868" />
-    <state width="1877" height="371" key="GridCell.Tab.0.center" timestamp="1605552290114">
+    <state width="1877" height="371" key="GridCell.Tab.0.center" timestamp="1605555485423">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="371" key="GridCell.Tab.0.center/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605552290114" />
+    <state width="1877" height="371" key="GridCell.Tab.0.center/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605555485423" />
     <state width="1899" height="342" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605542832868" />
-    <state width="1877" height="371" key="GridCell.Tab.0.left" timestamp="1605552290114">
+    <state width="1877" height="371" key="GridCell.Tab.0.left" timestamp="1605555485423">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="371" key="GridCell.Tab.0.left/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605552290114" />
+    <state width="1877" height="371" key="GridCell.Tab.0.left/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605555485423" />
     <state width="1899" height="342" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605542832867" />
-    <state width="1877" height="371" key="GridCell.Tab.0.right" timestamp="1605552290114">
+    <state width="1877" height="371" key="GridCell.Tab.0.right" timestamp="1605555485424">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="371" key="GridCell.Tab.0.right/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605552290114" />
+    <state width="1877" height="371" key="GridCell.Tab.0.right/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605555485424" />
     <state width="1899" height="342" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605542832868" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1605552267778">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -454,10 +449,10 @@
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605552332317" />
     <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605541042753" />
-    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605549234973">
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605554663376">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605549234973" />
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605554663376" />
     <state x="2697" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605527982655" />
     <state x="-1341" y="0" width="1357" height="1027" maximized="true" key="dock-window-1" timestamp="1605550016313">
       <screen x="-1920" y="0" width="1920" height="1040" />

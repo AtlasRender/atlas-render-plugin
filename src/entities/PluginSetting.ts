@@ -45,13 +45,21 @@ export default class PluginSetting implements WebJsonable {
      * label - label of the field. Will be displayed in the UI.
      */
     public readonly label: string;
-
     /**
      * id - custom id for user needs.
      */
     public readonly id?: string | number;
+    /**
+     * nullable - if true, target value can be not filled.
+     */
+    public readonly nullable: boolean;
 
+    /**
+     * validation - validation error object. Contains validation map.
+     * @protected
+     */
     protected validation: ValidationError;
+
 
     /**
      * validateName - function, designed to validate setting name.
@@ -86,7 +94,7 @@ export default class PluginSetting implements WebJsonable {
         if (typeof setting !== "object" || Array.isArray(setting))
             throw new ValidationError("Fatal validation error: incorrect token.", [], {isFatal: true});
 
-        const {name, label} = setting;
+        const {name, label, nullable} = setting;
 
 
         if (!PluginSetting.types.includes(type))
@@ -123,6 +131,7 @@ export default class PluginSetting implements WebJsonable {
         this.setType(type);
         this.name = name;
         this.label = label;
+        this.nullable = !!nullable;
         this.id = setting.id;
     }
 

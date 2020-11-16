@@ -110,6 +110,8 @@ export default class StringField extends PluginSetting {
     }
 
     validatePayload(payload: any): string {
+        if (this.nullable && !payload) return null;
+
         const interpreted: string = "" + payload;
         const error = new ValidationError("Incorrect payload.", undefined, {id: this.id});
         if (this.min != null && interpreted.length < this.min)
