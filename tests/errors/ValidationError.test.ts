@@ -109,4 +109,28 @@ describe("errors->ValidationError createValidationError", () => {
         expect(result).toBeInstanceOf(ValidationError);
         expect(result.getValidation().length).toBe(2);
     });
+
+    test("Test invalid token. (validation)", () => {
+        token.validation = "I am a string";
+        let result: ValidationError = null;
+        expect(() => result = ValidationError.createValidationError(token)).toThrowError(TypeError);
+    });
+
+    test("Test invalid token. (nested)", () => {
+        token.nested = "I am a string";
+        let result: ValidationError = null;
+        expect(() => result = ValidationError.createValidationError(token)).toThrowError(TypeError);
+    });
+
+    test("Test invalid token. (fatalError)", () => {
+        token.fatalError = "false";
+        let result: ValidationError = null;
+        expect(() => result = ValidationError.createValidationError(token)).toThrowError(TypeError);
+    });
+
+    test("Test invalid token. (message)", () => {
+        token.message = {hello: "darkness"};
+        let result: ValidationError = null;
+        expect(() => result = ValidationError.createValidationError(token)).toThrowError(TypeError);
+    });
 });

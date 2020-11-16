@@ -72,8 +72,8 @@ export default class ValidationError extends TypeError {
             validation = input.validation.map(item => Validator.createValidator(item));
 
         let nested: ValidationError[] = [];
-        if (input.validation)
-            validation = input.validation.map(item => ValidationError.createValidationError(item));
+        if (input.nested)
+            nested = input.nested.map(item => ValidationError.createValidationError(item));
 
         const result: ValidationError = new ValidationError(input.message, validation, input.fatalError || false);
         result.addNested(nested);

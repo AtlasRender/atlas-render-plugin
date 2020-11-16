@@ -36,7 +36,23 @@ const input = [
     }
 ];
 
-console.log(new ValidationError("Hello"));
+const err = {
+    message: "Error",
+    fatalError: false,
+    validation: [],
+    nested: [
+        new ValidationError("hello"),
+        new ValidationError("darkness"),
+    ],
+};
+
+try {
+    const res = ValidationError.createValidationError(err);
+    console.log(res);
+}catch (error) {
+    console.error(error.message, error.trace);
+}
+
 
 // try {
 //     const spec = new PluginSettingsSpec(input);
