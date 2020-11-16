@@ -76,17 +76,18 @@ export default class PluginSetting implements WebJsonable {
      * @author Danil Andreev
      */
     constructor(type: string, setting: any) {
-        this.validation = new ValidationError("Validation error");
+        if (setting?.id && !(typeof setting?.id === "number" || typeof setting?.id == "string"))
+            throw new TypeError(`Incorrect type of id setting, expected "string |number | undefined", got "${typeof setting?.id}"`);
+        if (setting?.id && typeof setting?.id === "string" && setting?.id.length > 50)
+            throw new TypeError(`id is too long. Expected string less than 50 characters.`);
+
+        this.validation = new ValidationError("Validation error", undefined, {id: setting?.id});
 
         if (typeof setting !== "object" || Array.isArray(setting))
             throw new ValidationError("Fatal validation error: incorrect token.", [], {isFatal: true});
 
-        const {name, label, id} = setting;
+        const {name, label} = setting;
 
-        if (id && !(typeof id === "number" || typeof id == "string"))
-            throw new TypeError(`Incorrect type of id setting, expected "string |number | undefined", got "${typeof id}"`);
-        if (id && typeof id === "string" && id.length > 50)
-            throw new TypeError(`id is too long. Expected string less than 50 characters.`);
 
         if (!PluginSetting.types.includes(type))
             throw new ValidationError("Incorrect setting type.", undefined, {isFatal: true});
@@ -122,7 +123,7 @@ export default class PluginSetting implements WebJsonable {
         this.setType(type);
         this.name = name;
         this.label = label;
-        this.id = id;
+        this.id = setting.id;
     }
 
     /**

@@ -12,6 +12,7 @@ import ValidatorOptionsExtended from "../interfaces/ValidatorOptionsExtended";
 import Validator from "./Validator";
 import {ValidationErrorOptions} from "../interfaces/ValidationErrorOptions";
 import WebJsonable from "../interfaces/WebJsonable";
+import * as _ from "lodash";
 
 
 /**
@@ -175,5 +176,31 @@ export default class ValidationError extends TypeError implements WebJsonable {
             nested: this.nested.map(item => item.getJSON()),
             validation: this.validation.map(item => item.getJSON()),
         }
+    }
+
+    /**
+     * getFlatErrorsList - returns flatten errors list with all nested errors and errors nested in validators.
+     * @method
+     * @author Danil Andreev
+     */
+    getFlatErrorsList(): ValidationError[] {
+        let errors = [];
+        errors = errors.concat(this.nested);
+        errors = errors.concat(_.flatten(this.nested.map((item: ValidationError): ValidationError[] => item.getFlatErrorsList())));
+        errors.concat(_.flatten(this.validation.map((validator: Validator): ValidationError[][] =>
+            (validator.getNested().map((item: ValidationError): ValidationError[] => item.getFlatErrorsList())
+        ))));
+        return errors;
+    }
+
+    /**
+     * getErrorOnId - returns error with custom id that matches input id.
+     * If not found - returns false.
+     * @method
+     * @param id - Target id.
+     * @author Danil Adnreev
+     */
+    getErrorOnId(id: number | string): ValidationError {
+        return this.getFlatErrorsList().find((item: ValidationError): boolean => item.id === id);
     }
 }

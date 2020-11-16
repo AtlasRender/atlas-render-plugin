@@ -46,7 +46,7 @@ export default class GroupField extends PluginSetting {
     }
 
     validatePayload(payload: any): object {
-        const validationError = new ValidationError("Incorrect payload.");
+        const validationError = new ValidationError("Incorrect payload.", undefined, {id: this.id});
         if (typeof payload !== "object")
             throw validationError.failValidation();
 

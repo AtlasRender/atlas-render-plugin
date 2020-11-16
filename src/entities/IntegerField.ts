@@ -58,7 +58,7 @@ export default class IntegerField extends FloatField {
                 throw error;
             validationError = error;
         } finally {
-            if (!validationError) validationError = new ValidationError("Incorrect payload.");
+            if (!validationError) validationError = new ValidationError("Incorrect payload.", undefined, {id: this.id});
         }
         if (!_.isInteger(interpreted))
             validationError.reject("type", "integer", {got: interpreted, message: "Value is not integer"});

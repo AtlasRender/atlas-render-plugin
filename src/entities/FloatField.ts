@@ -75,7 +75,7 @@ export default class FloatField extends PluginSetting {
 
     public validatePayload(payload: any): number {
         const interpreted: number = +payload;
-        const error = new ValidationError("Incorrect payload.");
+        const error = new ValidationError("Incorrect payload.", undefined, {id: this.id});
         if (isNaN(interpreted))
             throw error.failValidation();
         if (interpreted > this.max)

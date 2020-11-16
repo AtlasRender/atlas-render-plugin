@@ -29,11 +29,13 @@ describe("entities->SettingsPayload", () => {
             min: -3,
             max: 10,
             default: 5,
+            id: 1,
         },
         {
             type: "group",
             name: "groupVal",
             label: "Group",
+            id: 2,
             nested: [
                 {
                     type: "string",
@@ -42,12 +44,14 @@ describe("entities->SettingsPayload", () => {
                     min: 0,
                     max: 50,
                     default: "Hello",
+                    id: 3,
                 },
                 {
                     type: "boolean",
                     name: "boolVal",
                     label: "Boolean field",
                     default: false,
+                    id: 4,
                 }
             ]
         }
@@ -73,10 +77,41 @@ describe("entities->SettingsPayload", () => {
         expect(result.payload.groupVal.boolVal).toBe(token.groupVal.boolVal);
     });
 
-    // TODO: check traceback of validation error.
     test("Test with incorrect payload", () => {
         token.intVal = "hello";
         let result: SettingsPayload<PayloadFields> = null;
         expect(() => result = new SettingsPayload<PayloadFields>(spec, token)).toThrowError(ValidationError);
+    });
+
+    test("Test validation trace on incorrect payload. (1)", () => {
+        token.intVal = "hello";
+        let result: SettingsPayload<PayloadFields> = null;
+        expect(() => {
+            try {
+                result = new SettingsPayload<PayloadFields>(spec, token);
+            } catch (error) {
+                if (error instanceof ValidationError) {
+                    expect(error.getErrorOnId(1)).toBeTruthy();
+                }
+                else
+                    throw error;
+            }
+        }).not.toThrowError();
+    });
+
+    test("Test validation trace on incorrect payload. (4)", () => {
+        token.boolVal = "true";
+        let result: SettingsPayload<PayloadFields> = null;
+        expect(() => {
+            try {
+                result = new SettingsPayload<PayloadFields>(spec, token);
+            } catch (error) {
+                if (error instanceof ValidationError) {
+                    expect(error.getErrorOnId(1)).toBeTruthy();
+                }
+                else
+                    throw error;
+            }
+        }).not.toThrowError();
     });
 });

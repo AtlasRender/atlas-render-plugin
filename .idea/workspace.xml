@@ -19,13 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="904e2fbc-e10f-48d2-aa4a-3596a1773b34" name="Default Changelist" comment="[GLOBAL] Added toJSON() method.&#10;[ValidationError] Added options to constructor.">
+    <list default="true" id="904e2fbc-e10f-48d2-aa4a-3596a1773b34" name="Default Changelist" comment="[PluginSetting] Added custom id param.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/FloatField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/FloatField.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/GroupField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/GroupField.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/IntegerField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/IntegerField.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/PluginSetting.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/PluginSetting.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/StringField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/StringField.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/errors/ValidationError.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/errors/ValidationError.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/ValidationErrorOptions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/ValidationErrorOptions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/entities/PluginSetting.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/entities/PluginSetting.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/errors/ValidationError.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/errors/ValidationError.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/entities/SettingsPayload.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/entities/SettingsPayload.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +110,7 @@
       <workItem from="1605397202500" duration="596000" />
       <workItem from="1605444691437" duration="17327000" />
       <workItem from="1605471700043" duration="10465000" />
-      <workItem from="1605536706108" duration="4285000" />
+      <workItem from="1605536706108" duration="6089000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <created>1605177248550</created>
@@ -278,7 +280,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605540067081</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="[PluginSetting] Added custom id param.">
+      <created>1605541039933</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1605541039933</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,7 +329,8 @@
     <MESSAGE value="[SettingsPayload] Added settings payload constructor." />
     <MESSAGE value="[SettingsPayload] Added tests and fixed bugs." />
     <MESSAGE value="[GLOBAL] Added toJSON() method.&#10;[ValidationError] Added options to constructor." />
-    <option name="LAST_COMMIT_MESSAGE" value="[GLOBAL] Added toJSON() method.&#10;[ValidationError] Added options to constructor." />
+    <MESSAGE value="[PluginSetting] Added custom id param." />
+    <option name="LAST_COMMIT_MESSAGE" value="[PluginSetting] Added custom id param." />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605481225198">
@@ -336,26 +346,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605450992602" />
-    <state width="1899" height="308" key="GridCell.Tab.0.bottom" timestamp="1605541012970">
+    <state width="1899" height="342" key="GridCell.Tab.0.bottom" timestamp="1605542832868">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="371" key="GridCell.Tab.0.bottom/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605493494717" />
-    <state width="1899" height="308" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605541012970" />
-    <state width="1899" height="308" key="GridCell.Tab.0.center" timestamp="1605541012969">
+    <state width="1899" height="342" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605542832868" />
+    <state width="1899" height="342" key="GridCell.Tab.0.center" timestamp="1605542832868">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="371" key="GridCell.Tab.0.center/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605493494717" />
-    <state width="1899" height="308" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605541012969" />
-    <state width="1899" height="308" key="GridCell.Tab.0.left" timestamp="1605541012969">
+    <state width="1899" height="342" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605542832868" />
+    <state width="1899" height="342" key="GridCell.Tab.0.left" timestamp="1605542832867">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="371" key="GridCell.Tab.0.left/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605493494717" />
-    <state width="1899" height="308" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605541012969" />
-    <state width="1899" height="308" key="GridCell.Tab.0.right" timestamp="1605541012969">
+    <state width="1899" height="342" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605542832867" />
+    <state width="1899" height="342" key="GridCell.Tab.0.right" timestamp="1605542832868">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="371" key="GridCell.Tab.0.right/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605493494717" />
-    <state width="1899" height="308" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605541012969" />
+    <state width="1899" height="342" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605542832868" />
     <state width="1882" height="344" key="GridCell.Tab.1.bottom" timestamp="1605537368666">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -420,11 +430,11 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2381" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605195464466" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605540069322">
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605541042753">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605481440746" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605540069322" />
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605541042753" />
     <state x="2697" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605527982655">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -443,18 +453,6 @@
           <line>38</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/entities/GroupField.ts</url>
-          <line>48</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/entities/StringField.ts</url>
-          <line>106</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
