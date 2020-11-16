@@ -10,6 +10,9 @@
 
 import ValidatorOptionsExtended from "../interfaces/ValidatorOptionsExtended";
 import Validator from "./Validator";
+import {ValidationErrorOptions} from "../interfaces/ValidationErrorOptions";
+import WebJsonable from "../interfaces/WebJsonable";
+import * as _ from "lodash";
 
 
 /**
@@ -17,7 +20,7 @@ import Validator from "./Validator";
  * @class
  * @author Danil Andreev
  */
-export default class ValidationError extends TypeError {
+export default class ValidationError extends TypeError implements WebJsonable {
     /**
      * validation - validation map.
      */
@@ -35,18 +38,57 @@ export default class ValidationError extends TypeError {
     protected nested: ValidationError[];
 
     /**
+     * id - custom identifier. Not used in validation.
+     */
+    public readonly id?: string | number;
+
+    /**
      * Creates an instance of SettingsValidationError
      * @param message - String message.
      * @param validation - Validation map object.
-     * @param isFatal - If true - fatal validation error.
+     * @param options - Validation error additional options.
      * @author Danil Andreev
      */
-    constructor(message: string, validation: Validator[] = [], isFatal?: boolean) {
+    constructor(message: string, validation: Validator[] = [], options: ValidationErrorOptions = {}) {
         super(message);
         this.validation = validation;
-        this.fatalError = !!isFatal;
+        this.fatalError = !!options.isFatal;
         this.nested = [];
+        this.id = options.id;
     }
+
+    /**
+     * createValidationError - creates ValidationError instance from input structure.
+     * @method
+     * @param input - Any input data. Will be checked and validated.
+     * @throws TypeError
+     * @author Danil Andreev
+     */
+    public static createValidationError(input: any): ValidationError {
+        if (typeof input !== "object")
+            throw new TypeError(`Invalid 'input' type, expected "object", got "${typeof input}".`);
+        if (typeof input.message !== "string")
+            throw new TypeError(`Invalid 'input.message' type, expected "string", got "${typeof input.message}".`);
+        if (input.fatalError && typeof input.fatalError !== "boolean")
+            throw new TypeError(`Invalid 'input.fatalError' type, expected "boolean", got "${typeof input.fatalError}".'`);
+        if (input.validation && !Array.isArray(input.validation))
+            throw new TypeError(`Invalid 'input.validation' type, expected "Validator[]", got "${typeof input.validation}".'`);
+        if (input.nested && !Array.isArray(input.nested))
+            throw new TypeError(`Invalid 'input.nested' type, expected "Validator[]", got "${typeof input.nested}".'`);
+
+        let validation: Validator[] = [];
+        if (input.validation)
+            validation = input.validation.map(item => Validator.createValidator(item));
+
+        let nested: ValidationError[] = [];
+        if (input.nested)
+            nested = input.nested.map(item => ValidationError.createValidationError(item));
+
+        const result: ValidationError = new ValidationError(input.message, validation, input.fatalError || false);
+        result.addNested(nested);
+        return result;
+    }
+
 
     /**
      * getValidation - method for getting validation map from error.
@@ -124,5 +166,41 @@ export default class ValidationError extends TypeError {
         else
             this.nested.push(error);
         return this;
+    }
+
+    public getJSON(): object {
+        return {
+            id: this.id,
+            message: this.message,
+            fatalError: this.fatalError,
+            nested: this.nested.map(item => item.getJSON()),
+            validation: this.validation.map(item => item.getJSON()),
+        }
+    }
+
+    /**
+     * getFlatErrorsList - returns flatten errors list with all nested errors and errors nested in validators.
+     * @method
+     * @author Danil Andreev
+     */
+    getFlatErrorsList(): ValidationError[] {
+        let errors = [];
+        errors = errors.concat(this.nested);
+        errors = errors.concat(_.flatten(this.nested.map((item: ValidationError): ValidationError[] => item.getFlatErrorsList())));
+        errors.concat(_.flatten(this.validation.map((validator: Validator): ValidationError[][] =>
+            (validator.getNested().map((item: ValidationError): ValidationError[] => item.getFlatErrorsList())
+        ))));
+        return errors;
+    }
+
+    /**
+     * getErrorOnId - returns error with custom id that matches input id.
+     * If not found - returns false.
+     * @method
+     * @param id - Target id.
+     * @author Danil Adnreev
+     */
+    getErrorOnId(id: number | string): ValidationError {
+        return this.getFlatErrorsList().find((item: ValidationError): boolean => item.id === id);
     }
 }

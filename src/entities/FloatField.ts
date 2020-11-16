@@ -72,4 +72,27 @@ export default class FloatField extends PluginSetting {
         this.max = setting.max;
         this.default = setting.default;
     }
+
+    public validatePayload(payload: any): number {
+        const interpreted: number = +payload;
+        const error = new ValidationError("Incorrect payload.", undefined, {id: this.id});
+        if (isNaN(interpreted))
+            throw error.failValidation();
+        if (interpreted > this.max)
+            error.reject("max", "number", {got: interpreted, message: "Out of bounds."});
+        if (interpreted < this.min)
+            error.reject("min", "number", {got: interpreted, message: "Out of bounds."});
+        if (error.hasErrors())
+            throw error;
+        return interpreted;
+    }
+
+    getJSON(): object {
+        return {
+            ...super.getJSON(),
+            min: this.min,
+            max: this.max,
+            default: this.default,
+        };
+    }
 }

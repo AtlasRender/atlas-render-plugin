@@ -10,6 +10,12 @@
 import ValidationError from "../errors/ValidationError";
 import {ValidatorOptions} from "./ValidatorOptions";
 
+
+/**
+ * ValidatorOptionsExtended - interface for Validator options, extended with nested errors.
+ * @interface
+ * @author Danil Andreev
+ */
 export default interface ValidatorOptionsExtended extends ValidatorOptions {
     /**
      * nested - nested items errors.

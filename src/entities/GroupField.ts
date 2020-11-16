@@ -44,4 +44,34 @@ export default class GroupField extends PluginSetting {
             this.validation.reject("nested", "array", {nested: error.getNested()});
         }
     }
+
+    validatePayload(payload: any): object {
+        const validationError = new ValidationError("Incorrect payload.", undefined, {id: this.id});
+        if (typeof payload !== "object")
+            throw validationError.failValidation();
+
+        const interpreted: object = this.nested.reduce((result: any, token: PluginSetting) => {
+            try {
+                result[token.name] = token.validatePayload(payload[token.name]);
+            } catch (error) {
+                if (!(error instanceof ValidationError))
+                    throw error;
+                validationError.addNested(error);
+            } finally {
+                return result;
+            }
+        }, {});
+
+        if (validationError.hasErrors())
+            throw validationError;
+
+        return interpreted;
+    }
+
+    getJSON(): object {
+        return {
+            ...super.getJSON(),
+            nested: this.nested.map(item => item.getJSON()),
+        };
+    }
 }

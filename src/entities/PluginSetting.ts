@@ -8,6 +8,7 @@
  */
 
 import ValidationError from "../errors/ValidationError";
+import WebJsonable from "../interfaces/WebJsonable";
 
 
 /**
@@ -15,7 +16,7 @@ import ValidationError from "../errors/ValidationError";
  * @class
  * @author Danil Andreev
  */
-export default class PluginSetting {
+export default class PluginSetting implements WebJsonable {
     /**
      * types - available setting types.
      */
@@ -45,6 +46,11 @@ export default class PluginSetting {
      */
     public readonly label: string;
 
+    /**
+     * id - custom id for user needs.
+     */
+    public readonly id?: string | number;
+
     protected validation: ValidationError;
 
     /**
@@ -66,18 +72,25 @@ export default class PluginSetting {
      * @param type - Type of the plugin setting.
      * @param setting - Setting object.
      * @throws ValidationError
+     * @throws TypeError
      * @author Danil Andreev
      */
     constructor(type: string, setting: any) {
-        this.validation = new ValidationError("Validation error");
+        if (setting?.id && !(typeof setting?.id === "number" || typeof setting?.id == "string"))
+            throw new TypeError(`Incorrect type of id setting, expected "string |number | undefined", got "${typeof setting?.id}"`);
+        if (setting?.id && typeof setting?.id === "string" && setting?.id.length > 50)
+            throw new TypeError(`id is too long. Expected string less than 50 characters.`);
+
+        this.validation = new ValidationError("Validation error", undefined, {id: setting?.id});
 
         if (typeof setting !== "object" || Array.isArray(setting))
-            throw new ValidationError("Fatal validation error: incorrect token.", [], true);
+            throw new ValidationError("Fatal validation error: incorrect token.", [], {isFatal: true});
 
         const {name, label} = setting;
 
+
         if (!PluginSetting.types.includes(type))
-            throw new ValidationError("Incorrect setting type.", undefined, true);
+            throw new ValidationError("Incorrect setting type.", undefined, {isFatal: true});
 
         if (typeof name !== "string")
             this.validation.reject("name", "string", {got: typeof name});
@@ -110,6 +123,7 @@ export default class PluginSetting {
         this.setType(type);
         this.name = name;
         this.label = label;
+        this.id = setting.id;
     }
 
     /**
@@ -146,5 +160,28 @@ export default class PluginSetting {
      */
     public getValidation(): ValidationError {
         return this.validation;
+    }
+
+    /**
+     * validatePayload - validates payload.
+     * If it is OK - function will return payload.
+     * If not - throw a Validation Error.
+     * @method
+     * @param payload - Any payload.
+     * @throws ReferenceError
+     * @throws ValidationError
+     * @author Danil Andreev
+     */
+    public validatePayload(payload: any): any {
+        throw new ReferenceError(`This method must be overridden by ral field!`);
+    }
+
+    public getJSON(): object {
+        return {
+            type: this.type,
+            name: this.name,
+            label: this.label,
+            id: this.id,
+        }
     }
 }

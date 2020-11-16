@@ -26,6 +26,32 @@ describe("entities->PluginSetting", () => {
         expect(result.getType()).toBe("float");
     });
 
+    test("Test correct token with custom number id.", () => {
+        const token = {
+            name: "basicSetting",
+            label: "A basic setting",
+            id: 1234,
+        };
+        let result: PluginSetting = null;
+        expect(() => result = new PluginSetting("float", token)).not.toThrowError();
+        expect(result).toBeInstanceOf(PluginSetting);
+        expect(result.isValid()).toBe(true);
+        expect(result.id).toBe(token.id);
+    });
+
+    test("Test correct token with custom string id.", () => {
+        const token = {
+            name: "basicSetting",
+            label: "A basic setting",
+            id: "hello-darkness",
+        };
+        let result: PluginSetting = null;
+        expect(() => result = new PluginSetting("float", token)).not.toThrowError();
+        expect(result).toBeInstanceOf(PluginSetting);
+        expect(result.isValid()).toBe(true);
+        expect(result.id).toBe(token.id);
+    });
+
     test("Test incorrect type.", () => {
         const token = {
             name: "basicSetting",
@@ -117,5 +143,25 @@ describe("entities->PluginSetting", () => {
         expect(result.isValid()).toBe(false);
         expect(result.getValidation().errorOn("name")).toBeTruthy();
         expect(result.getValidation().errorOn("label")).toBeFalsy();
+    });
+
+    test("Test token with too long id", () => {
+        const token = {
+            name: "name",
+            label: "I am a label",
+            id: "Hello darkness my old friend, I've come to talk with you again, Because a vision softly creeping.",
+        };
+        let result: PluginSetting = null;
+        expect(() => result = new PluginSetting("integer", token)).toThrowError(TypeError);
+    });
+
+    test("Test token with invalid id type.", () => {
+        const token = {
+            name: "name",
+            label: "I am a label",
+            id: true,
+        };
+        let result: PluginSetting = null;
+        expect(() => result = new PluginSetting("integer", token)).toThrowError(TypeError);
     });
 });
