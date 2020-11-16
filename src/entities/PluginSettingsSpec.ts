@@ -14,7 +14,7 @@ import {
     GroupField,
     PluginSetting,
     SeparatorField,
-    IntegerField
+    IntegerField, StringField
 } from "./index";
 
 
@@ -73,6 +73,8 @@ export default class PluginSettingsSpec {
                 return new FloatField(setting);
             case "integer":
                 return new IntegerField(setting);
+            case "string":
+                return new StringField(setting);
             case "boolean":
                 return new BooleanField(setting);
             case "group":

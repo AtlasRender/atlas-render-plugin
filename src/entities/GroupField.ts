@@ -57,6 +57,8 @@ export default class GroupField extends PluginSetting {
                 if (!(error instanceof ValidationError))
                     throw error;
                 validationError.addNested(error);
+            } finally {
+                return result;
             }
         }, {});
 

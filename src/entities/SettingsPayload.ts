@@ -43,6 +43,8 @@ export default class SettingsPayload<T = any> {
                 if (!(error  instanceof ValidationError))
                     throw error;
                 validationError.addNested(error);
+            } finally {
+                return result;
             }
         }, {});
 

@@ -9,7 +9,6 @@
 
 import PluginSetting from "./PluginSetting";
 import ValidationError from "../errors/ValidationError";
-import * as _ from "lodash";
 
 
 /**
@@ -77,7 +76,7 @@ export default class FloatField extends PluginSetting {
     public validatePayload(payload: any): number {
         const interpreted: number = +payload;
         const error = new ValidationError("Incorrect payload.");
-        if (!_.isNumber(interpreted))
+        if (isNaN(interpreted))
             throw error.failValidation();
         if (interpreted > this.max)
             error.reject("max", "number", {got: interpreted, message: "Out of bounds."});

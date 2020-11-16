@@ -9,54 +9,69 @@
 
 import {GroupField, PluginSetting, PluginSettingsSpec} from "./entities";
 import ValidationError from "./errors/ValidationError";
+import SettingsPayload from "./entities/SettingsPayload";
 
 const input = [
     {
+        type: "integer",
+        name: "intVal",
+        label: "Integer value",
+        min: -3,
+        max: 10,
+        default: 5,
+    },
+    {
         type: "group",
-        name: "groupField",
-        label: "I am a group field",
+        name: "groupVal",
+        label: "Group",
         nested: [
             {
-                type: "integer",
-                name: "nestedInteger",
-                label: "I am an nested int",
+                type: "string",
+                name: "strVal",
+                label: "String value",
                 min: 0,
-                max: 10,
-                default: 2,
+                max: 50,
+                default: "Hello",
             },
             {
-                type: "float",
-                name: "nestedInteger",
-                label: "I am a a nested float",
-                min: 0.1,
-                max: 10.2,
-                default: 2.4,
-            },
-        ],
+                type: "boolean",
+                name: "boolVal",
+                label: "Boolean field",
+                default: false,
+            }
+        ]
     }
-];
+]
 
-const err = {
-    message: "Error",
-    fatalError: false,
-    validation: [],
-    nested: [
-        new ValidationError("hello"),
-        new ValidationError("darkness"),
-    ],
-};
+const payload = {
+    intVal: "hello",
+    groupVal: {
+        strVal: "Hello darkness my old friend",
+        boolVal: true,
+    },
+}
+// const err = {
+//     message: "Error",
+//     fatalError: false,
+//     validation: [],
+//     nested: [
+//         new ValidationError("hello"),
+//         new ValidationError("darkness"),
+//     ],
+// };
+//
+// try {
+//     const res = ValidationError.createValidationError(err);
+//     console.log(res);
+// }catch (error) {
+//     console.error(error.message, error.trace);
+// }
+
 
 try {
-    const res = ValidationError.createValidationError(err);
-    console.log(res);
-}catch (error) {
-    console.error(error.message, error.trace);
+    const spec = new PluginSettingsSpec(input);
+    const result = new SettingsPayload(spec, payload);
+    console.log(result);
+} catch (error) {
+    console.error(error.message, error);
 }
-
-
-// try {
-//     const spec = new PluginSettingsSpec(input);
-//     console.log(spec);
-// } catch (error) {
-//     console.error(error.message, error);
-// }
