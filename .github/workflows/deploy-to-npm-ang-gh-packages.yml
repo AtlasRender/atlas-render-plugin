@@ -1,0 +1,62 @@
+name: Publish package to NPM and GH-Packages registry
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build package and run tests
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Yarn frozen lockfile
+        run: yarn --frozen-lockfile
+      - name: Run yarn install
+        run: yarn install
+      - name: Run auto tests
+        run: yarn run test
+
+  publish-npm:
+    needs: build
+    name: Publish to npm
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+          scope: '@atlasrender'
+      - name: Run yarn install.
+        run: yarn install --frozen-lockfile
+      - name: Run yarn build.
+        run: yarn run build
+      - name: Publish to npm registry.
+        run: yarn publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+
+  publish-gpr:
+    needs: build
+    name: Publish to gpr
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://npm.pkg.github.com/
+          scope: '@atlasrender'
+      - name: Run yarn install.
+        run: yarn install --frozen-lockfile
+      - name: Run yarn build.
+        run: yarn run build
+      - name: Publish to npm registry.
+        run: yarn publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

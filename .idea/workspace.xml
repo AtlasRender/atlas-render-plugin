@@ -19,14 +19,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="904e2fbc-e10f-48d2-aa4a-3596a1773b34" name="Default Changelist" comment="[PluginSetting] Added custom id param.">
+    <list default="true" id="904e2fbc-e10f-48d2-aa4a-3596a1773b34" name="Default Changelist" comment="[Settings] Made some params unnecessary.">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/deploy-to-npm-ang-gh-packages.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interfaces/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/FloatField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/FloatField.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/IntegerField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/IntegerField.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/StringField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/StringField.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/errors/ValidationError.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/errors/ValidationError.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/errors/Validator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/errors/Validator.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/entities/FloatField.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/entities/FloatField.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/entities/StringField.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/entities/StringField.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/ValidationErrorOptions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/ValidationErrorOptions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/ValidatorOptions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/ValidatorOptions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/ValidatorOptionsExtended.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/ValidatorOptionsExtended.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,13 +81,13 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\onepl\WebstormProjects\atlas-render-plugin\src\Errors" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Projects\atlas-render-plugin\tests\entities" />
       <recent name="D:\Projects\atlas-render-plugin\src\entities" />
       <recent name="C:\Users\onepl\WebstormProjects\atlas-render-plugin\src\entities" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\onepl\WebstormProjects\atlas-render-plugin\src\Errors" />
     </key>
   </component>
   <component name="RunManager" selected="Jest.Test with Jest">
@@ -286,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605541039933</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="[Settings] Made some params unnecessary.">
+      <created>1605552329756</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1605552329756</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,13 +340,18 @@
     <MESSAGE value="[SettingsPayload] Added tests and fixed bugs." />
     <MESSAGE value="[GLOBAL] Added toJSON() method.&#10;[ValidationError] Added options to constructor." />
     <MESSAGE value="[PluginSetting] Added custom id param." />
-    <option name="LAST_COMMIT_MESSAGE" value="[PluginSetting] Added custom id param." />
+    <MESSAGE value="[Settings] Made some params unnecessary." />
+    <option name="LAST_COMMIT_MESSAGE" value="[Settings] Made some params unnecessary." />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605481225198">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605481225198" />
+    <state x="655" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605553270384">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="655" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605553270384" />
     <state width="1918" height="396" key="DebuggerActiveHint" timestamp="1605536400646">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -345,10 +361,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605450992602" />
-    <state width="373" height="291" key="Git.Branch.Popup" timestamp="1605549352093">
+    <state width="375" height="293" key="Git.Branch.Popup" timestamp="1605552331472">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="373" height="291" key="Git.Branch.Popup/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605549352093" />
+    <state width="375" height="293" key="Git.Branch.Popup/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605552331472" />
     <state width="1877" height="371" key="GridCell.Tab.0.bottom" timestamp="1605552290114">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -433,10 +449,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2381" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605195464466" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605541042753">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605552332317">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605481440746" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605552332317" />
     <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605541042753" />
     <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605549234973">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -447,22 +463,9 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1341" y="0" width="1357" height="1027" maximized="true" key="dock-window-1/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605550016313" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/entities/SettingsPayload.ts</url>
-          <line>38</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/entities/StringField.ts</url>
-          <line>42</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="677" y="291" key="refactoring.ChangeSignatureDialog" timestamp="1605552855272">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="677" y="291" key="refactoring.ChangeSignatureDialog/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605552855272" />
   </component>
 </project>

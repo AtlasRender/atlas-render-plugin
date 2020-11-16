@@ -7,8 +7,8 @@
  * All rights reserved.
  */
 
-import ValidationError from "../errors/ValidationError";
-import {ValidatorOptions} from "./ValidatorOptions";
+import ValidatorOptions from "./ValidatorOptions";
+import {ValidationError} from "../errors";
 
 
 /**
