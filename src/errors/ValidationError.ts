@@ -39,7 +39,7 @@ export default class ValidationError extends TypeError implements WebJsonable {
     /**
      * id - custom identifier. Not used in validation.
      */
-    public readonly id: any;
+    public readonly id?: string | number;
 
     /**
      * Creates an instance of SettingsValidationError

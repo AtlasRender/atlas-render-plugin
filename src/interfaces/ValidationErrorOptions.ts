@@ -20,5 +20,5 @@ export interface ValidationErrorOptions {
     /**
      * id - custom identifier. Not used in validation.
      */
-    id?: any,
+    id?: string | number,
 }

@@ -32,6 +32,17 @@ describe("errors->ValidationError", () => {
         expect(result.isFatal()).toBe(true);
     });
 
+    test("Test custom id  on creation.", () => {
+        let result: ValidationError = null;
+        expect(() => result = new ValidationError(
+            "Something is invalid",
+            undefined,
+            {id: 123}
+        )).not.toThrowError();
+        expect(result).toBeInstanceOf(ValidationError);
+        expect(result.id).toBe(123);
+    });
+
     test("Test rejection.", () => {
         let result: ValidationError = null;
         expect(() => result = new ValidationError("Something is invalid")).not.toThrowError();
