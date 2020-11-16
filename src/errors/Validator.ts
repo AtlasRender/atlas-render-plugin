@@ -49,6 +49,43 @@ export default class Validator implements ValidatorOptions {
     }
 
     /**
+     * createValidator - creates Validator instance from input structure.
+     * @method
+     * @param input - Any input data. Will be checked and validated.
+     * @throws TypeError
+     * @author Danil Andreev
+     */
+    public static createValidator(input: any): Validator {
+        if (typeof input !== "object")
+            throw new TypeError(`Incorrect type of validator, expected "object", got "${typeof input}"`);
+        if (typeof input.key !== "string")
+            throw new TypeError(`Incorrect type of 'key' field, expected "string", got "${typeof input.key}"`);
+        if (typeof input.expected !== "string")
+            throw new TypeError(`Incorrect type of 'expected' field, expected "string", got "${typeof input.expected}"`);
+        if (input.message && typeof input.message !== "string")
+            throw new TypeError(`Incorrect type of 'message' field, expected "string | undefined", got "${typeof input.message}"`);
+        if (input.status && typeof input.status !== "number")
+            throw new TypeError(`Incorrect type of 'status' field, expected "number | undefined", got "${typeof input.status}"`);
+        if (input.nested && !Array.isArray(input.nested))
+            throw new TypeError(`Incorrect type of 'nested' field, expected "ValidationError[]", got "${typeof input.nested}"`);
+
+        let nested: ValidationError[] = [];
+        if (input.nested)
+            nested = input.nested.map(item => ValidationError.createValidationError(item));
+
+        const result = new Validator(
+            input.key,
+            input.expected, {
+                message: input.message,
+                status: input.status,
+                got: input.got,
+                nested: nested,
+            }
+        );
+        return result;
+    }
+
+    /**
      * getNested - returns an array of nested errors.
      * @method
      * @author Danil Andreev

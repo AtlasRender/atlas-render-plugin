@@ -49,6 +49,39 @@ export default class ValidationError extends TypeError {
     }
 
     /**
+     * createValidationError - creates ValidationError instance from input structure.
+     * @method
+     * @param input - Any input data. Will be checked and validated.
+     * @throws TypeError
+     * @author Danil Andreev
+     */
+    public static createValidationError(input: any): ValidationError {
+        if (typeof input !== "object")
+            throw new TypeError(`Invalid 'input' type, expected "object", got "${typeof input}".`);
+        if (typeof input.message !== "string")
+            throw new TypeError(`Invalid 'input.message' type, expected "string", got "${typeof input.message}".`);
+        if (input.fatalError && typeof input.fatalError !== "boolean")
+            throw new TypeError(`Invalid 'input.fatalError' type, expected "boolean", got "${typeof input.fatalError}".'`);
+        if (input.validation && !Array.isArray(input.validation))
+            throw new TypeError(`Invalid 'input.validation' type, expected "Validator[]", got "${typeof input.validation}".'`);
+        if (input.nested && !Array.isArray(input.nested))
+            throw new TypeError(`Invalid 'input.nested' type, expected "Validator[]", got "${typeof input.nested}".'`);
+
+        let validation: Validator[] = [];
+        if (input.validation)
+            validation = input.validation.map(item => Validator.createValidator(item));
+
+        let nested: ValidationError[] = [];
+        if (input.validation)
+            validation = input.validation.map(item => ValidationError.createValidationError(item));
+
+        const result: ValidationError = new ValidationError(input.message, validation, input.fatalError || false);
+        result.addNested(nested);
+        return result;
+    }
+
+
+    /**
      * getValidation - method for getting validation map from error.
      * @method
      * @author Danil Andreev

@@ -8,6 +8,7 @@
  */
 
 import ValidationError from "../../src/errors/ValidationError";
+import Validator from "../../src/errors/Validator";
 
 
 describe("errors->ValidationError", () => {
@@ -52,5 +53,60 @@ describe("errors->ValidationError", () => {
         expect(result.getNested().length).toBe(1);
         expect(result.getValidation().length).toBe(0);
         expect(result.hasErrors()).toBe(true);
+    });
+});
+
+describe("errors->ValidationError createValidationError", () => {
+    let token: any = null;
+    beforeEach(() => {
+        token = {
+            message: "Error",
+            fatalError: false,
+            validation: [],
+            nested: [],
+        };
+    });
+
+    test("Test valid token.", () => {
+        let result: ValidationError = null;
+        expect(() => result = ValidationError.createValidationError(token)).not.toThrowError();
+        expect(result).toBeInstanceOf(ValidationError);
+        expect(result.hasErrors()).toBe(false);
+        expect(result.message).toBe(token.message);
+        expect(result.getValidation()).toEqual(token.validation);
+        expect(result.getNested()).toEqual(token.nested);
+    });
+
+    test("Test valid token with nested errors.", () => {
+        token.nested = [
+            new ValidationError("hello"),
+            new ValidationError("darkness"),
+        ];
+        let result: ValidationError = null;
+        expect(() => result = ValidationError.createValidationError(token)).not.toThrowError();
+        expect(result).toBeInstanceOf(ValidationError);
+        expect(result.getNested().length).toBe(2);
+    });
+
+    test("Test valid token with validators.", () => {
+        token.validation = [
+            new Validator("field1", "string"),
+            new Validator("field2", "string"),
+        ];
+        let result: ValidationError = null;
+        expect(() => result = ValidationError.createValidationError(token)).not.toThrowError();
+        expect(result).toBeInstanceOf(ValidationError);
+        expect(result.getValidation().length).toBe(2);
+    });
+
+    test("Test valid token with validators.", () => {
+        token.validation = [
+            new Validator("field1", "string"),
+            new Validator("field2", "string"),
+        ];
+        let result: ValidationError = null;
+        expect(() => result = ValidationError.createValidationError(token)).not.toThrowError();
+        expect(result).toBeInstanceOf(ValidationError);
+        expect(result.getValidation().length).toBe(2);
     });
 });

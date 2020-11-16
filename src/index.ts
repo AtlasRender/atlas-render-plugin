@@ -8,6 +8,7 @@
 */
 
 import {GroupField, PluginSetting, PluginSettingsSpec} from "./entities";
+import ValidationError from "./errors/ValidationError";
 
 const input = [
     {
@@ -35,9 +36,11 @@ const input = [
     }
 ];
 
-try {
-    const spec = new PluginSettingsSpec(input);
-    console.log(spec);
-} catch (error) {
-    console.error(error.message, error);
-}
+console.log(new ValidationError("Hello"));
+
+// try {
+//     const spec = new PluginSettingsSpec(input);
+//     console.log(spec);
+// } catch (error) {
+//     console.error(error.message, error);
+// }

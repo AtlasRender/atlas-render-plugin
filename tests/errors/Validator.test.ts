@@ -51,3 +51,73 @@ describe("errors->Validator", () => {
         expect(result.getNested()).toContainEqual(nestedError);
     });
 });
+
+describe("errors->Validator createValidator", () => {
+    let token: any = null;
+    beforeEach(() => {
+        token = {
+            key: "field",
+            expected: "string",
+            message: "Error",
+            status: 100,
+            nested: []
+        };
+    });
+    test("Test valid token.", () => {
+        let result: Validator = null;
+        expect(() => result = Validator.createValidator(token)).not.toThrowError();
+        expect(result).toBeInstanceOf(Validator);
+        expect(result.key).toBe(token.key);
+        expect(result.expected).toBe(token.expected);
+        expect(result.status).toBe(token.status);
+        expect(result.message).toBe(token.message);
+        expect(result.getNested()).toEqual(token.nested);
+    });
+
+    test("Test valid token with nested errors.", () => {
+        token.nested = [
+            new ValidationError("hello"),
+            new ValidationError("darkness"),
+        ];
+        let result: Validator = null;
+        expect(() => result = Validator.createValidator(token)).not.toThrowError();
+        expect(result).toBeInstanceOf(Validator);
+        expect(result.getNested().length).toBe(2);
+    });
+
+    test("Test invalid token. (nested type)", () => {
+        token.nested = "string";
+        let result: Validator = null;
+        expect(() => result = Validator.createValidator(token)).toThrowError(TypeError);
+    });
+
+    test("Test invalid token. (nested item)", () => {
+        token.nested = ["darkness"];
+        let result: Validator = null;
+        expect(() => result = Validator.createValidator(token)).toThrowError(TypeError);
+    });
+
+    test("Test invalid token. (expected)", () => {
+        token.expected = 1;
+        let result: Validator = null;
+        expect(() => result = Validator.createValidator(token)).toThrowError(TypeError);
+    });
+
+    test("Test invalid token. (key)", () => {
+        token.key = 1;
+        let result: Validator = null;
+        expect(() => result = Validator.createValidator(token)).toThrowError(TypeError);
+    });
+
+    test("Test invalid token. (message)", () => {
+        token.message = 1;
+        let result: Validator = null;
+        expect(() => result = Validator.createValidator(token)).toThrowError(TypeError);
+    });
+
+    test("Test invalid token. (status)", () => {
+        token.status = "1";
+        let result: Validator = null;
+        expect(() => result = Validator.createValidator(token)).toThrowError(TypeError);
+    });
+});
