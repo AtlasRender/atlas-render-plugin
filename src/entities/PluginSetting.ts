@@ -147,4 +147,18 @@ export default class PluginSetting {
     public getValidation(): ValidationError {
         return this.validation;
     }
+
+    /**
+     * validatePayload - validates payload.
+     * If it is OK - function will return payload.
+     * If not - throw a Validation Error.
+     * @method
+     * @param payload - Any payload.
+     * @throws ReferenceError
+     * @throws ValidationError
+     * @author Danil Andreev
+     */
+    public validatePayload(payload: any): any {
+        throw new ReferenceError(`This method must be overridden by ral field!`);
+    }
 }

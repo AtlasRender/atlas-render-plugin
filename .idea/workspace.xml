@@ -19,11 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="904e2fbc-e10f-48d2-aa4a-3596a1773b34" name="Default Changelist" comment="[PluginSetting] Added name validation.">
+    <list default="true" id="904e2fbc-e10f-48d2-aa4a-3596a1773b34" name="Default Changelist" comment="[ValidationError] Added tests and fixed small bugs.">
+      <change afterPath="$PROJECT_DIR$/src/entities/SettingsPayload.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/errors/ValidationError.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/errors/ValidationError.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/BooleanField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/BooleanField.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/FloatField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/FloatField.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/GroupField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/GroupField.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/PluginSetting.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/PluginSetting.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/SeparatorField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/SeparatorField.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/StringField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/StringField.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/errors/ValidationError.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/errors/ValidationError.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/errors/Validator.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/errors/Validator.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,7 +258,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605481438787</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="[ValidationError] Added tests and fixed small bugs.">
+      <created>1605531206082</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1605531206082</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,7 +303,8 @@
     <MESSAGE value="[StringField] Added tests." />
     <MESSAGE value="[ValidationError] Added tests." />
     <MESSAGE value="[PluginSetting] Added name validation." />
-    <option name="LAST_COMMIT_MESSAGE" value="[PluginSetting] Added name validation." />
+    <MESSAGE value="[ValidationError] Added tests and fixed small bugs." />
+    <option name="LAST_COMMIT_MESSAGE" value="[ValidationError] Added tests and fixed small bugs." />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605481225198">
@@ -389,11 +403,11 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2381" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605195464466" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605481440746">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605531208503">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605481440746" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605278244877" />
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605531208503" />
     <state x="2697" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605527982655">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>

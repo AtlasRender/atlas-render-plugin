@@ -37,4 +37,8 @@ export default class BooleanField extends PluginSetting {
 
         this.default = setting.default;
     }
+
+    validatePayload(payload: any): boolean {
+        return !!payload;
+    }
 }

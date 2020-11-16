@@ -102,4 +102,16 @@ export default class StringField extends PluginSetting {
         this.max = setting.max;
         this.default = setting.default;
     }
+
+    validatePayload(payload: any): string {
+        const interpreted: string = "" + payload;
+        const error = new ValidationError("Incorrect payload.");
+        if (interpreted.length < this.min)
+            error.reject("min", "string", {got: interpreted, message: "Out of bounds."});
+        if (interpreted.length > this.max)
+            error.reject("max", "string", {got: interpreted, message: "Out of bounds."});
+        if(error.hasErrors())
+            throw error;
+        return interpreted;
+    }
 }

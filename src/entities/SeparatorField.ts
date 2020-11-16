@@ -26,4 +26,8 @@ export default class SeparatorField extends PluginSetting {
     constructor(setting: any) {
         super("separator", setting);
     }
+
+    validatePayload(payload: any): null {
+        return null;
+    }
 }
