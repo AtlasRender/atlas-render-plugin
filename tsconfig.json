@@ -10,8 +10,8 @@
     "sourceMap": true,
     "declaration": true,
     "emitDecoratorMetadata": true,
-    "declarationDir": "dest",
-    "outDir": "dest",
+    "declarationDir": "./",
+    "outDir": "./",
     "resolveJsonModule": true
   },
   "include": ["src/**/*"],

@@ -19,12 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="904e2fbc-e10f-48d2-aa4a-3596a1773b34" name="Default Changelist" comment="[Settings] Made some params unnecessary.">
-      <change afterPath="$PROJECT_DIR$/.npmignore" afterDir="false" />
+    <list default="true" id="904e2fbc-e10f-48d2-aa4a-3596a1773b34" name="Default Changelist" comment="[Deploy] Added deployment builds.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -291,7 +289,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605552329756</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="[Deploy] Added deployment builds.">
+      <created>1605556484705</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1605556484705</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,7 +315,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Initial commit." />
     <MESSAGE value="[Repository] Added community files." />
     <MESSAGE value="[entities] Added some entities." />
     <MESSAGE value="[IntegerFields] Created IntegerField entity.&#10;[ValidationError] Created validation error type.&#10;[Validator] Created validation error token, called Validator." />
@@ -335,7 +339,8 @@
     <MESSAGE value="[GLOBAL] Added toJSON() method.&#10;[ValidationError] Added options to constructor." />
     <MESSAGE value="[PluginSetting] Added custom id param." />
     <MESSAGE value="[Settings] Made some params unnecessary." />
-    <option name="LAST_COMMIT_MESSAGE" value="[Settings] Made some params unnecessary." />
+    <MESSAGE value="[Deploy] Added deployment builds." />
+    <option name="LAST_COMMIT_MESSAGE" value="[Deploy] Added deployment builds." />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605481225198">
@@ -355,10 +360,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605450992602" />
-    <state width="385" height="303" key="Git.Branch.Popup" timestamp="1605555037748">
+    <state width="387" height="305" key="Git.Branch.Popup" timestamp="1605556486641">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="385" height="303" key="Git.Branch.Popup/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605555037748" />
+    <state width="387" height="305" key="Git.Branch.Popup/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605556486641" />
     <state width="1877" height="371" key="GridCell.Tab.0.bottom" timestamp="1605555485424">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -443,15 +448,15 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2381" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605195464466" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605552332317">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605556487414">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605552332317" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605556487414" />
     <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605541042753" />
-    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605554663376">
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605556461896">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605554663376" />
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605556461896" />
     <state x="2697" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605527982655" />
     <state x="-1341" y="0" width="1357" height="1027" maximized="true" key="dock-window-1" timestamp="1605550016313">
       <screen x="-1920" y="0" width="1920" height="1040" />
