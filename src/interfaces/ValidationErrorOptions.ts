@@ -12,7 +12,7 @@
  * @interface
  * @author Danil Andreev
  */
-export interface ValidationErrorOptions {
+export default interface ValidationErrorOptions {
     /**
      * isFatal - if true - validation is failed with fatal error.
      */

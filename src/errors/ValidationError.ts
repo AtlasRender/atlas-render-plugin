@@ -10,7 +10,7 @@
 
 import ValidatorOptionsExtended from "../interfaces/ValidatorOptionsExtended";
 import Validator from "./Validator";
-import {ValidationErrorOptions} from "../interfaces/ValidationErrorOptions";
+import {ValidationErrorOptions} from "../interfaces";
 import WebJsonable from "../interfaces/WebJsonable";
 import * as _ from "lodash";
 

@@ -1,8 +1,34 @@
 {
-  "name": "atlas-render-plugin",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "@atlasrender/render-plugin",
+  "version": "0.1.0",
+  "main": "index.ts",
+  "private": false,
   "license": "MIT",
+  "description": "Atlas Render Farm Manager plugin system.",
+  "keywords": [
+    "atlas",
+    "rendering",
+    "manager",
+    "automation",
+    "plugin-syustem",
+    "3d-graphics",
+    "2d-graphics",
+    "cgi",
+    "visualization"
+  ],
+  "author": {
+    "name": "Andrieiev Danil",
+    "url": "https://github.com/DanilAndreev",
+    "email": "danssg08@gmail.com"
+  },
+  "bugs": {
+    "email": "atlas.render.farm@gmail.com",
+    "url": "https://github.com/AtlasRender/atlas-render-plugin/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AtlasRender/atlas-render-plugin.git"
+  },
   "scripts": {
     "start": "ts-node",
     "test": "jest --detectOpenHandles",

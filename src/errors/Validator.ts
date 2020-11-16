@@ -8,9 +8,9 @@
  */
 
 import ValidationError from "./ValidationError";
-import {ValidatorOptions} from "../interfaces/ValidatorOptions";
 import ValidatorOptionsExtended from "../interfaces/ValidatorOptionsExtended";
 import WebJsonable from "../interfaces/WebJsonable";
+import {ValidatorOptions} from "../interfaces";
 
 
 /**

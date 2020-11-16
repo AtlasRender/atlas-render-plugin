@@ -12,7 +12,7 @@
  * @interface
  * @author Danil Andreev
  */
-export interface ValidatorOptions {
+export default interface ValidatorOptions {
     /**
      * message - unnecessary message.
      */

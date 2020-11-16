@@ -40,12 +40,12 @@ export default class StringField extends PluginSetting {
     constructor(setting: any) {
         super("string", setting);
 
-        if (typeof setting.min !== "number")
+        if (setting.min != null && typeof setting.min !== "number")
             this.validation.reject("min", "integer", {got: typeof setting.min});
 
-        if (typeof setting.max !== "number")
+        if (setting.max != null && typeof setting.max !== "number")
             this.validation.reject("max", "integer", {got: typeof setting.max});
-        else if (!this.validation.errorOn("min") && setting.min > setting.max)
+        else if (setting.min != null && !this.validation.errorOn("min") && setting.min > setting.max)
             this.validation.reject(
                 "max",
                 "integer",
@@ -53,37 +53,43 @@ export default class StringField extends PluginSetting {
             );
 
 
-        if (!this.validation.errorOn("min") && !this.validation.errorOn("max")) {
-            if (!_.isInteger(setting.min))
-                this.validation.reject(
-                    "min",
-                    "integer",
-                    {message: "Min value can not be float.", status: 400}
-                );
+        if (setting.max != null && !this.validation.errorOn("max")) {
             if (!_.isInteger(setting.max))
                 this.validation.reject(
                     "max",
                     "integer",
                     {message: "Max value can not be float.", status: 400}
                 );
-            if (setting.min < 0)
-                this.validation.reject(
-                    "min",
-                    "integer",
-                    {got: typeof  setting.min, message: "Min length can not be less than zero", status: 401}
-                );
             if (setting.max < 0)
                 this.validation.reject(
                     "max",
                     "integer",
-                    {got: typeof  setting.min, message: "Max length can not be less than zero", status: 401}
+                    {got: typeof setting.min, message: "Max length can not be less than zero", status: 401}
+                );
+        }
+
+        if (setting.min != null && !this.validation.errorOn("min")) {
+            if (!_.isInteger(setting.min))
+                this.validation.reject(
+                    "min",
+                    "integer",
+                    {message: "Min value can not be float.", status: 400}
+                );
+            if (setting.min < 0)
+                this.validation.reject(
+                    "min",
+                    "integer",
+                    {got: typeof setting.min, message: "Min length can not be less than zero", status: 401}
                 );
         }
 
 
-        if (typeof setting.default !== "string")
+        if (setting.default != null && typeof setting.default !== "string")
             this.validation.reject("default", "string", {got: typeof setting.default});
-        else if (!(this.validation.errorOn("min") && this.validation.errorOn("max"))) {
+        else if (
+            setting.max != null && setting.min != null && setting.default != null &&
+            !(this.validation.errorOn("min") && this.validation.errorOn("max"))
+        ) {
             if (setting.default.length < setting.min)
                 this.validation.reject(
                     "default",
@@ -106,11 +112,11 @@ export default class StringField extends PluginSetting {
     validatePayload(payload: any): string {
         const interpreted: string = "" + payload;
         const error = new ValidationError("Incorrect payload.", undefined, {id: this.id});
-        if (interpreted.length < this.min)
+        if (this.min != null && interpreted.length < this.min)
             error.reject("min", "string", {got: interpreted, message: "Out of bounds."});
-        if (interpreted.length > this.max)
+        if (this.max != null && interpreted.length > this.max)
             error.reject("max", "string", {got: interpreted, message: "Out of bounds."});
-        if(error.hasErrors())
+        if (error.hasErrors())
             throw error;
         return interpreted;
     }

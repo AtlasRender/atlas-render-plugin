@@ -28,19 +28,19 @@ export default class IntegerField extends FloatField {
         super(setting);
         this.setType("integer");
 
-        if (!this.validation.errorOn("min") && !_.isInteger(setting.min))
+        if (this.min != null && !this.validation.errorOn("min") && !_.isInteger(setting.min))
             this.validation.reject(
                 "min",
                 "integer",
                 {message: "Min value must be integer type.", status: 400}
             );
-        if (!this.validation.errorOn("max") && !_.isInteger(setting.max))
+        if (this.max != null && !this.validation.errorOn("max") && !_.isInteger(setting.max))
             this.validation.reject(
                 "max",
                 "integer",
                 {message: "Max value must be integer type.", status: 400}
             );
-        if (!this.validation.errorOn("default") && !_.isInteger(setting.default))
+        if (this.default != null && !this.validation.errorOn("default") && !_.isInteger(setting.default))
             this.validation.reject(
                 "default",
                 "integer",
