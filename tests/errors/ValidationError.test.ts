@@ -26,7 +26,7 @@ describe("errors->ValidationError", () => {
         expect(() => result = new ValidationError(
             "Something is invalid",
             undefined,
-            true
+            {isFatal: true}
         )).not.toThrowError();
         expect(result).toBeInstanceOf(ValidationError);
         expect(result.isFatal()).toBe(true);

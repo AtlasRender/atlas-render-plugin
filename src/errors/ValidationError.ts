@@ -10,6 +10,8 @@
 
 import ValidatorOptionsExtended from "../interfaces/ValidatorOptionsExtended";
 import Validator from "./Validator";
+import {ValidationErrorOptions} from "../interfaces/ValidationErrorOptions";
+import WebJsonable from "../interfaces/WebJsonable";
 
 
 /**
@@ -17,7 +19,7 @@ import Validator from "./Validator";
  * @class
  * @author Danil Andreev
  */
-export default class ValidationError extends TypeError {
+export default class ValidationError extends TypeError implements WebJsonable {
     /**
      * validation - validation map.
      */
@@ -35,17 +37,23 @@ export default class ValidationError extends TypeError {
     protected nested: ValidationError[];
 
     /**
+     * id - custom identifier. Not used in validation.
+     */
+    public readonly id: any;
+
+    /**
      * Creates an instance of SettingsValidationError
      * @param message - String message.
      * @param validation - Validation map object.
-     * @param isFatal - If true - fatal validation error.
+     * @param options - Validation error additional options.
      * @author Danil Andreev
      */
-    constructor(message: string, validation: Validator[] = [], isFatal?: boolean) {
+    constructor(message: string, validation: Validator[] = [], options: ValidationErrorOptions = {}) {
         super(message);
         this.validation = validation;
-        this.fatalError = !!isFatal;
+        this.fatalError = !!options.isFatal;
         this.nested = [];
+        this.id = options.id;
     }
 
     /**
@@ -157,5 +165,15 @@ export default class ValidationError extends TypeError {
         else
             this.nested.push(error);
         return this;
+    }
+
+    public getJSON(): object {
+        return {
+            id: this.id,
+            message: this.message,
+            fatalError: this.fatalError,
+            nested: this.nested.map(item => item.getJSON()),
+            validation: this.validation.map(item => item.getJSON()),
+        }
     }
 }

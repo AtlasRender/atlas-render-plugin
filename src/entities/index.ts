@@ -15,3 +15,4 @@ export {default as BooleanField} from "./BooleanField";
 export {default as GroupField} from "./GroupField";
 export {default as PluginSettingsSpec} from "./PluginSettingsSpec";
 export {default as StringField} from "./StringField";
+export {default as SettingsPayload} from "./SettingsPayload";

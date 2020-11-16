@@ -41,4 +41,11 @@ export default class BooleanField extends PluginSetting {
     validatePayload(payload: any): boolean {
         return !!payload;
     }
+
+    getJSON(): object {
+        return {
+            ...super.getJSON(),
+            default: this.default,
+        };
+    }
 }

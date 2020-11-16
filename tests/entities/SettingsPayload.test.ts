@@ -8,9 +8,9 @@
  */
 
 
-import {PluginSettingsSpec} from "../../src/entities";
-import SettingsPayload from "../../src/entities/SettingsPayload";
-import ValidationError from "../../src/errors/ValidationError";
+import {PluginSettingsSpec, SettingsPayload} from "../../src/entities";
+import {ValidationError} from "../../src/errors";
+
 
 interface PayloadFields {
     intVal: number,

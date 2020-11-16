@@ -86,4 +86,13 @@ export default class FloatField extends PluginSetting {
             throw error;
         return interpreted;
     }
+
+    getJSON(): object {
+        return {
+            ...super.getJSON(),
+            min: this.min,
+            max: this.max,
+            default: this.default,
+        };
+    }
 }

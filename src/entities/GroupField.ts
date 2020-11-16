@@ -67,4 +67,11 @@ export default class GroupField extends PluginSetting {
 
         return interpreted;
     }
+
+    getJSON(): object {
+        return {
+            ...super.getJSON(),
+            nested: this.nested.map(item => item.getJSON()),
+        };
+    }
 }

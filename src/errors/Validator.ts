@@ -10,6 +10,7 @@
 import ValidationError from "./ValidationError";
 import {ValidatorOptions} from "../interfaces/ValidatorOptions";
 import ValidatorOptionsExtended from "../interfaces/ValidatorOptionsExtended";
+import WebJsonable from "../interfaces/WebJsonable";
 
 
 /**
@@ -17,7 +18,7 @@ import ValidatorOptionsExtended from "../interfaces/ValidatorOptionsExtended";
  * @class
  * @author Danil Andreev
  */
-export default class Validator implements ValidatorOptions {
+export default class Validator implements ValidatorOptions, WebJsonable {
     /**
      * key - validated object key.
      */
@@ -101,5 +102,16 @@ export default class Validator implements ValidatorOptions {
     public addNested(error: ValidationError): Validator {
         this.nested.push(error);
         return this;
+    }
+
+    getJSON(): object {
+        return {
+            key: this.key,
+            expected: this.expected,
+            message: this.message,
+            status: this.status,
+            got: this.got,
+            nested: this.nested.map(item => item.getJSON()),
+        }
     }
 }

@@ -8,6 +8,7 @@
  */
 
 import ValidationError from "../errors/ValidationError";
+import WebJsonable from "../interfaces/WebJsonable";
 
 
 /**
@@ -15,7 +16,7 @@ import ValidationError from "../errors/ValidationError";
  * @class
  * @author Danil Andreev
  */
-export default class PluginSetting {
+export default class PluginSetting implements WebJsonable {
     /**
      * types - available setting types.
      */
@@ -72,12 +73,12 @@ export default class PluginSetting {
         this.validation = new ValidationError("Validation error");
 
         if (typeof setting !== "object" || Array.isArray(setting))
-            throw new ValidationError("Fatal validation error: incorrect token.", [], true);
+            throw new ValidationError("Fatal validation error: incorrect token.", [], {isFatal: true});
 
         const {name, label} = setting;
 
         if (!PluginSetting.types.includes(type))
-            throw new ValidationError("Incorrect setting type.", undefined, true);
+            throw new ValidationError("Incorrect setting type.", undefined, {isFatal: true});
 
         if (typeof name !== "string")
             this.validation.reject("name", "string", {got: typeof name});
@@ -160,5 +161,13 @@ export default class PluginSetting {
      */
     public validatePayload(payload: any): any {
         throw new ReferenceError(`This method must be overridden by ral field!`);
+    }
+
+    public getJSON(): object {
+        return {
+            type: this.type,
+            name: this.name,
+            label: this.label,
+        }
     }
 }

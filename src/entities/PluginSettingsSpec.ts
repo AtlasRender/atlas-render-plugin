@@ -37,7 +37,7 @@ export default class PluginSettingsSpec {
      */
     constructor(settings: any) {
         if (!Array.isArray(settings)) {
-            throw new ValidationError("Fatal: Invalid type of input", undefined, true);
+            throw new ValidationError("Fatal: Invalid type of input", undefined, {isFatal: true});
         }
 
         const errors: ValidationError[] = [];
@@ -67,7 +67,7 @@ export default class PluginSettingsSpec {
      */
     protected buildSetting(setting: any): PluginSetting {
         if (typeof setting !== "object" || typeof setting.type !== "string")
-            throw new ValidationError("Fatal: Invalid type of input.", undefined, true);
+            throw new ValidationError("Fatal: Invalid type of input.", undefined, {isFatal: true});
         switch (setting.type) {
             case "float":
                 return new FloatField(setting);
@@ -82,7 +82,7 @@ export default class PluginSettingsSpec {
             case "separator":
                 return new SeparatorField(setting);
             default:
-                throw new ValidationError("Fatal: invalid type on one of tokens.", undefined, true);
+                throw new ValidationError("Fatal: invalid type on one of tokens.", undefined, {isFatal: true});
         }
     }
 }
