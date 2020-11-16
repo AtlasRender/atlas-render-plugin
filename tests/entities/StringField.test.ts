@@ -40,10 +40,7 @@ describe("entities->StringField", () => {
         };
         let result: StringField = null;
         expect(() => result = new StringField(token)).not.toThrowError();
-        expect(result.isValid()).toBe(false);
-        expect(result.getValidation().errorOn("min")).toBeTruthy();
-        expect(result.getValidation().errorOn("max")).toBeFalsy();
-        expect(result.getValidation().errorOn("default")).toBeFalsy();
+        expect(result.isValid()).toBe(true);
     });
 
     test("Test token without max.", () => {
@@ -55,10 +52,7 @@ describe("entities->StringField", () => {
         };
         let result: StringField = null;
         expect(() => result = new StringField(token)).not.toThrowError();
-        expect(result.isValid()).toBe(false);
-        expect(result.getValidation().errorOn("max")).toBeTruthy();
-        expect(result.getValidation().errorOn("min")).toBeFalsy();
-        expect(result.getValidation().errorOn("default")).toBeFalsy();
+        expect(result.isValid()).toBe(true);
     });
 
     test("Test token without default.", () => {
@@ -70,10 +64,7 @@ describe("entities->StringField", () => {
         };
         let result: StringField = null;
         expect(() => result = new StringField(token)).not.toThrowError();
-        expect(result.isValid()).toBe(false);
-        expect(result.getValidation().errorOn("default")).toBeTruthy();
-        expect(result.getValidation().errorOn("min")).toBeFalsy();
-        expect(result.getValidation().errorOn("max")).toBeFalsy();
+        expect(result.isValid()).toBe(true);
     });
 
     test("Test token with min greater than max.", () => {

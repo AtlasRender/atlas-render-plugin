@@ -7,7 +7,7 @@
 * All rights reserved.
 */
 
-import {GroupField, PluginSetting, PluginSettingsSpec} from "./entities";
+import {GroupField, PluginSetting, PluginSettingsSpec, StringField} from "./entities";
 import ValidationError from "./errors/ValidationError";
 import SettingsPayload from "./entities/SettingsPayload";
 
@@ -68,10 +68,21 @@ const payload = {
 // }
 
 
-try {
-    const spec = new PluginSettingsSpec(input);
-    const result = new SettingsPayload(spec, payload);
-    console.log(result);
-} catch (error) {
-    console.error(error.message, error);
-}
+// try {
+//     const spec = new PluginSettingsSpec(input);
+//     const result = new SettingsPayload(spec, payload);
+//     console.log(result);
+// } catch (error) {
+//     console.error(error.message, error);
+// }
+
+
+const token = {
+    name: "floatFiled",
+    label: "I am float field",
+    min: 0,
+    max: 10,
+    default: "Hello darkness my old friend",
+};
+
+console.log(new StringField(token).getValidation());
