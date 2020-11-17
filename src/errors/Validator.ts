@@ -20,6 +20,33 @@ import {ValidatorOptions} from "../interfaces";
  */
 export default class Validator implements ValidatorOptions, WebJsonable {
     /**
+     * Codes - available error codes for validation.
+     */
+    public static readonly Codes = {
+        // 1XX Common errors
+        INVALID_PAYLOAD: 100,
+
+        // 2XX - Type errors
+        INVALID_TYPE: 200,
+        INVALID_NUMBER: 210,
+        INVALID_INTEGER: 211,
+        INVALID_BOOLEAN: 220,
+        INVALID_OBJECT: 230,
+        INVALID_KEY: 240,
+        INVALID_STRING: 250,
+        INVALID_ARRAY: 260,
+
+        // 3XX - Boundary errors
+        OUT_OF_BOUNDS: 300,
+        HIGHER_THAN_MAX: 310,
+        TOO_BIG_VALUE: 312,
+        LOWER_THAN_MIN: 320,
+        LOWER_THAN_ZERO: 321,
+        TOO_SMALL_VALUE: 322,
+        MIN_HIGHER_THAN_MAX: 330,
+    }
+
+    /**
      * key - validated object key.
      */
     public readonly key: string;
