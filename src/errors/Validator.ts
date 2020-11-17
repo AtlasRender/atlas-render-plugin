@@ -77,6 +77,17 @@ export default class Validator implements ValidatorOptions, WebJsonable {
     }
 
     /**
+     * compareCode - returns true if expected code is subset of current
+     * @param expected - Code for checking.
+     * @param current - Code from validation.
+     * @example
+     *
+     */
+    public static compareCode(expected: number, current: number) {
+
+    }
+
+    /**
      * createValidator - creates Validator instance from input structure.
      * @method
      * @param input - Any input data. Will be checked and validated.
