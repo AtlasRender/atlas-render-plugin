@@ -10,6 +10,7 @@
 import PluginSetting from "./PluginSetting";
 import ValidationError from "../errors/ValidationError";
 import * as _ from "lodash";
+import {Validator} from "../errors";
 
 
 /**
@@ -49,7 +50,7 @@ export default class StringField extends PluginSetting {
             this.validation.reject(
                 "max",
                 "integer",
-                {message: "Max value can not be less than min.", status: 400}
+                {message: "Max value can not be lower than min.", status: Validator.Codes.LOWER_THAN_MIN}
             );
 
 
@@ -58,13 +59,17 @@ export default class StringField extends PluginSetting {
                 this.validation.reject(
                     "max",
                     "integer",
-                    {message: "Max value can not be float.", status: 400}
+                    {message: "Max value can not be float.", status: Validator.Codes.INVALID_INTEGER}
                 );
             if (setting.max < 0)
                 this.validation.reject(
                     "max",
                     "integer",
-                    {got: typeof setting.min, message: "Max length can not be less than zero", status: 401}
+                    {
+                        got: typeof setting.min,
+                        message: "Max length can not be less than zero",
+                        status: Validator.Codes.LOWER_THAN_ZERO
+                    }
                 );
         }
 
@@ -73,13 +78,17 @@ export default class StringField extends PluginSetting {
                 this.validation.reject(
                     "min",
                     "integer",
-                    {message: "Min value can not be float.", status: 400}
+                    {message: "Min value can not be float.", status: Validator.Codes.INVALID_INTEGER}
                 );
             if (setting.min < 0)
                 this.validation.reject(
                     "min",
                     "integer",
-                    {got: typeof setting.min, message: "Min length can not be less than zero", status: 401}
+                    {
+                        got: typeof setting.min,
+                        message: "Min length can not be less than zero",
+                        status: Validator.Codes.LOWER_THAN_ZERO
+                    }
                 );
         }
 
@@ -94,13 +103,13 @@ export default class StringField extends PluginSetting {
                 this.validation.reject(
                     "default",
                     "string",
-                    {message: "Default value can not be less than min.", status: 400}
+                    {message: "Default value can not be lower than min.", status: Validator.Codes.LOWER_THAN_MIN}
                 );
             if (setting.default.length > setting.max)
                 this.validation.reject(
                     "default",
                     "string",
-                    {message: "Default value can not be higher than max.", status: 400}
+                    {message: "Default value can not be higher than max.", status: Validator.Codes.HIGHER_THAN_MAX}
                 );
         }
 
