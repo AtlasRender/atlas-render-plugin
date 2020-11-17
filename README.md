@@ -20,7 +20,7 @@ This library is designed to allow users use ___render plugin___ mechanism of __A
 ## It provides you with:
 * Plugin settigns spec validation.
 * Validation errors structure validation. 
-> For validationd __ValidationErrors__, recieved throug the web.
+> For validation __ValidationErrors__, recieved throug the web.
 * Validation plugin settigns payload.
 
 # Learn
