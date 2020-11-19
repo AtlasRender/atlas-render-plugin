@@ -50,6 +50,15 @@ describe("errors->Validator", () => {
         expect(() => result.addNested(nestedError)).not.toThrowError();
         expect(result.getNested()).toContainEqual(nestedError);
     });
+
+    test("Test compareCode", () => {
+        const code = 421;
+        expect(Validator.compareCode(420, code)).toBe(true);
+        expect(Validator.compareCode(400, code)).toBe(true);
+        expect(Validator.compareCode(0, code)).toBe(true);
+        expect(Validator.compareCode(422, code)).toBe(false);
+        expect(Validator.compareCode(223, code)).toBe(false);
+    })
 });
 
 describe("errors->Validator createValidator", () => {

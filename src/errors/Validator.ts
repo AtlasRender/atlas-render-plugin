@@ -81,10 +81,19 @@ export default class Validator implements ValidatorOptions, WebJsonable {
      * @param expected - Code for checking.
      * @param current - Code from validation.
      * @example
-     *
+     * Validator.compareCode(420, 421) === true
+     * Validator.compareCode(400, 421) === true
+     * Validator.compareCode(422, 421) === false
+     * Validator.compareCode(431, 421) === false
      */
-    public static compareCode(expected: number, current: number) {
-
+    public static compareCode(expected: number, current: number): boolean {
+        const expectedStr: string = String(expected);
+        const currentStr: string = String(current);
+        for (let i = 0; i < currentStr.length; i++) {
+            if (expectedStr[i] && expectedStr[i] !== "0" && expectedStr[i] !== currentStr[i])
+                return false;
+        }
+        return true;
     }
 
     /**
