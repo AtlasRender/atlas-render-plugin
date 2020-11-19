@@ -36,7 +36,7 @@ export default class SettingsPayload<T = any> {
     constructor(spec: PluginSettingsSpec, payload: any) {
         this.spec = spec;
         const validationError = new ValidationError("Invalid payload.");
-        const interpreted = spec.settings.reduce((result: any, token: PluginSetting) => {
+        const interpreted = spec.reduce((result: any, token: PluginSetting) => {
             try {
                 result[token.name] = token.validatePayload(payload[token.name]);
             } catch (error) {

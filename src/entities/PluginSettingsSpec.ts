@@ -23,11 +23,11 @@ import {
  * @class
  * @author Danil Andreev
  */
-export default class PluginSettingsSpec {
-    /**
-     * settings - plugin settings structure.
-     */
-    public readonly settings: PluginSetting[];
+export default class PluginSettingsSpec extends Array<PluginSetting>{
+    // /**
+    //  * settings - plugin settings structure.
+    //  */
+    // public readonly settings: PluginSetting[];
 
     /**
      * Creates an instance of PluginSettingsSpec
@@ -40,20 +40,21 @@ export default class PluginSettingsSpec {
             throw new ValidationError("Fatal: Invalid type of input", undefined, {isFatal: true});
         }
 
+        super();
         const errors: ValidationError[] = [];
 
-        this.settings = settings.map((setting: any): PluginSetting => {
+        for(const setting of settings) {
             try {
                 const result = this.buildSetting(setting);
                 if (!result.isValid())
                     throw result.getValidation();
-                return result;
+                this.push(result);
             } catch (error) {
                 if (!(error instanceof ValidationError))
                     throw error;
                 errors.push(error);
             }
-        });
+        }
 
         if (errors.length)
             throw new ValidationError("Validation error on input object.").addNested(errors);
