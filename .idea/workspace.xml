@@ -19,12 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0c9422ab-ed2b-4a17-be3e-393bfbd931ae" name="Default Changelist" comment="[Validator] Added definition of compare function.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/GroupField.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/GroupField.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/PluginSettingsSpec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/PluginSettingsSpec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/SettingsPayload.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/SettingsPayload.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/entities/PluginSettingsSpec.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/entities/PluginSettingsSpec.test.ts" afterDir="false" />
+    <list default="true" id="0c9422ab-ed2b-4a17-be3e-393bfbd931ae" name="Default Changelist" comment="[package] Raised version.">
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
