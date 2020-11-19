@@ -47,7 +47,7 @@ describe("entities->PluginSettingSpec", () => {
     test("Test correct token.", () => {
         let result: PluginSettingsSpec = null;
         expect(() => result = new PluginSettingsSpec(token)).not.toThrowError();
-        expect(result.settings.length).toBe(3);
+        expect(result.length).toBe(3);
     });
 
     test("Test incorrect token.", () => {

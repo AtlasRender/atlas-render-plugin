@@ -37,7 +37,7 @@ export default class GroupField extends PluginSetting {
 
         this.nested = [];
         try {
-            this.nested = new PluginSettingsSpec(setting.nested).settings;
+            this.nested = new PluginSettingsSpec(setting.nested);
         } catch (error) {
             if (!(error instanceof ValidationError))
                 throw error;
