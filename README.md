@@ -9,7 +9,6 @@
         <img alt="GitHub" src="https://img.shields.io/github/license/AtlasRender/atlas-render-plugin"/>
         <img alt="GitHub issues" src="https://img.shields.io/github/issues-raw/AtlasRender/atlas-render-plugin">
         <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/AtlasRender/atlas-render-plugin">
-        <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/AtlasRender/atlas-core/npm-run-test-pull-request">
         <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/AtlasRender/atlas-render-plugin">
     </div>
 </a>
