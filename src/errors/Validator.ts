@@ -20,6 +20,33 @@ import {ValidatorOptions} from "../interfaces";
  */
 export default class Validator implements ValidatorOptions, WebJsonable {
     /**
+     * Codes - available error codes for validation.
+     */
+    public static readonly Codes = {
+        // 1XX Common errors
+        INVALID_PAYLOAD: 100,
+
+        // 2XX - Type errors
+        INVALID_TYPE: 200,
+        INVALID_NUMBER: 210,
+        INVALID_INTEGER: 211,
+        INVALID_BOOLEAN: 220,
+        INVALID_OBJECT: 230,
+        INVALID_KEY: 240,
+        INVALID_STRING: 250,
+        INVALID_ARRAY: 260,
+
+        // 3XX - Boundary errors
+        OUT_OF_BOUNDS: 300,
+        HIGHER_THAN_MAX: 310,
+        TOO_BIG_VALUE: 312,
+        LOWER_THAN_MIN: 320,
+        LOWER_THAN_ZERO: 321,
+        TOO_SMALL_VALUE: 322,
+        MIN_HIGHER_THAN_MAX: 330,
+    }
+
+    /**
      * key - validated object key.
      */
     public readonly key: string;
@@ -47,6 +74,26 @@ export default class Validator implements ValidatorOptions, WebJsonable {
         this.status = options.status;
         this.got = options.got;
         this.nested = Array.isArray(options.nested) ? [...options.nested] : [];
+    }
+
+    /**
+     * compareCode - returns true if expected code is subset of current
+     * @param expected - Code for checking.
+     * @param current - Code from validation.
+     * @example
+     * Validator.compareCode(420, 421) === true
+     * Validator.compareCode(400, 421) === true
+     * Validator.compareCode(422, 421) === false
+     * Validator.compareCode(431, 421) === false
+     */
+    public static compareCode(expected: number, current: number): boolean {
+        const expectedStr: string = String(expected);
+        const currentStr: string = String(current);
+        for (let i = 0; i < currentStr.length; i++) {
+            if (expectedStr[i] && expectedStr[i] !== "0" && expectedStr[i] !== currentStr[i])
+                return false;
+        }
+        return true;
     }
 
     /**
