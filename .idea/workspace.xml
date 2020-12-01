@@ -20,12 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c9422ab-ed2b-4a17-be3e-393bfbd931ae" name="Default Changelist" comment="[package] Raised version.">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_11_2020_19_53_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_16_11_2020_19_53__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/PluginSettingsSpec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/PluginSettingsSpec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/entities/GroupField.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/entities/GroupField.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/entities/PluginSettingsSpec.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/entities/PluginSettingsSpec.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +105,7 @@
       <workItem from="1605471700043" duration="10465000" />
       <workItem from="1605536706108" duration="6089000" />
       <workItem from="1606828298364" duration="3687000" />
+      <workItem from="1606832651196" duration="12000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <created>1605177248550</created>
@@ -385,11 +381,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605450992602" />
-    <state width="419" height="337" key="Git.Branch.Popup" timestamp="1606828360838">
+    <state width="421" height="339" key="Git.Branch.Popup" timestamp="1606832656474">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="387" height="305" key="Git.Branch.Popup/0.0.1920.1040/-3840.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1605556486641" />
-    <state width="419" height="337" key="Git.Branch.Popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606828360838" />
+    <state width="421" height="339" key="Git.Branch.Popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1606832656474" />
     <state width="949" height="342" key="GridCell.Tab.0.bottom" timestamp="1606832008989">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -503,7 +499,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/entities/GroupField.ts</url>
           <line>39</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
