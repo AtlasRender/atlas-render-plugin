@@ -26,7 +26,7 @@ describe("entities->GroupField", () => {
                 },
                 {
                     type: "float",
-                    name: "nestedInteger",
+                    name: "nestedFloat",
                     label: "I am a a nested float",
                     min: 0.1,
                     max: 10.2,
