@@ -16,6 +16,7 @@ import {
     SeparatorField,
     IntegerField, StringField
 } from "./index";
+import * as path from "path";
 
 
 /**
@@ -23,12 +24,7 @@ import {
  * @class
  * @author Danil Andreev
  */
-export default class PluginSettingsSpec extends Array<PluginSetting>{
-    // /**
-    //  * settings - plugin settings structure.
-    //  */
-    // public readonly settings: PluginSetting[];
-
+export default class PluginSettingsSpec extends Array<PluginSetting> {
     /**
      * Creates an instance of PluginSettingsSpec
      * @param settings - Input object structure to process.
@@ -43,12 +39,18 @@ export default class PluginSettingsSpec extends Array<PluginSetting>{
         super();
         const errors: ValidationError[] = [];
 
-        for(const setting of settings) {
+        for (const setting of settings) {
             try {
                 const result = this.buildSetting(setting);
                 if (!result.isValid())
                     throw result.getValidation();
-                this.push(result);
+                if (this.find((item: PluginSetting) => item.name === result.name))
+                    throw new ValidationError(
+                        `Field with name "${result.name}" already exists in this structure.`,
+                        undefined,
+                        {isFatal: true}
+                    );
+                super.push(result);
             } catch (error) {
                 if (!(error instanceof ValidationError))
                     throw error;
@@ -85,5 +87,45 @@ export default class PluginSettingsSpec extends Array<PluginSetting>{
             default:
                 throw new ValidationError("Fatal: invalid type on one of tokens.", undefined, {isFatal: true});
         }
+    }
+
+    public map<U>(callback: (value: PluginSetting, index: number, array: PluginSetting[]) => U, thisArg?: any): U[] {
+        const newArray: PluginSetting[] = [...this];
+        return newArray.map(callback);
+    }
+
+    filter(predicate: (value: PluginSetting, index: number, array: PluginSetting[]) => unknown, thisArg?: any): PluginSetting[] {
+        const newArray: PluginSetting[] = [...this];
+        return newArray.filter(predicate, thisArg);
+    }
+
+    slice(start?: number, end?: number): PluginSetting[] {
+        const newArray: PluginSetting[] = [...this];
+        return newArray.slice(start, end);
+    }
+
+    public concat(...items): PluginSettingsSpec {
+        const newArray: PluginSetting[] = [...this].concat(...items);
+        return new PluginSettingsSpec(newArray);
+    }
+
+    public copyWithin(target: number, start: number, end?: number): this {
+        throw new Error(`This method is not allowed in PluginSettingSpec object.`);
+    }
+
+    public fill(value: PluginSetting, start?: number, end?: number): this {
+        throw new Error(`This method is not allowed in PluginSettingSpec object.`);
+    }
+
+    public push(...items): number {
+        throw new Error(`This method is not allowed in PluginSettingSpec object.`);
+    }
+
+    public splice(start: number, deleteCount?: number): PluginSetting[] {
+        throw new Error(`This method is not allowed in PluginSettingSpec object.`);
+    }
+
+    public unshift(...items): number {
+        throw new Error(`This method is not allowed in PluginSettingSpec object.`);
     }
 }

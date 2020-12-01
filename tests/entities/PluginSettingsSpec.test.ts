@@ -7,7 +7,7 @@
  * All rights reserved.
  */
 
-import {PluginSettingsSpec} from "../../src/entities";
+import {IntegerField, PluginSettingsSpec} from "../../src/entities";
 import ValidationError from "../../src/errors/ValidationError";
 
 
@@ -66,5 +66,64 @@ describe("entities->PluginSettingSpec", () => {
         token[2].nested[0].default = "string";
         let result: PluginSettingsSpec = null;
         expect(() => result = new PluginSettingsSpec(token)).toThrowError(ValidationError);
+    });
+
+    test("Test concat.", () => {
+        const token2 = [
+            {
+                type: "separator",
+                name: "sep2",
+                label: "Separator",
+            },
+        ]
+        let result1: PluginSettingsSpec = null;
+        let result2: PluginSettingsSpec = null;
+        expect(() => result1 = new PluginSettingsSpec(token)).not.toThrowError();
+        expect(() => result2 = new PluginSettingsSpec(token2)).not.toThrowError();
+        expect(() => result1.concat(result1)).toThrowError(ValidationError);
+        expect(() => result1.concat(result2)).not.toThrowError();
+    });
+
+    test("Test copyWithin.", () => {
+        let result: PluginSettingsSpec = null;
+        expect(() => result = new PluginSettingsSpec(token)).not.toThrowError();
+        expect(() => result.copyWithin(0, 1)).toThrowError(Error);
+    });
+
+    test("Test entries.", () => {
+        let result: PluginSettingsSpec = null;
+        expect(() => result = new PluginSettingsSpec(token)).not.toThrowError();
+        expect(() => result.entries()).not.toThrowError();
+    });
+
+    test("Test every.", () => {
+        let result: PluginSettingsSpec = null;
+        expect(() => result = new PluginSettingsSpec(token)).not.toThrowError();
+        expect(() => result.every(item => item.name)).not.toThrowError();
+    });
+
+    test("Test map.", () => {
+        let result: PluginSettingsSpec = null;
+        expect(() => result = new PluginSettingsSpec(token)).not.toThrowError();
+        expect(() => result.map(item => item)).not.toThrowError();
+        expect(() => result.map(item => item.name)).not.toThrowError();
+    });
+
+    test("Test push.", () => {
+        let result: PluginSettingsSpec = null;
+        expect(() => result = new PluginSettingsSpec(token)).not.toThrowError();
+        expect(() => result.push(new IntegerField({type: "integer", name: "1", label: "Hello"}))).toThrowError(Error);
+    });
+
+    test("Test filter.", () => {
+        let result: PluginSettingsSpec = null;
+        expect(() => result = new PluginSettingsSpec(token)).not.toThrowError();
+        expect(() => result.filter(item => item.name !== "grp")).not.toThrowError();
+    });
+
+    test("Test slice.", () => {
+        let result: PluginSettingsSpec = null;
+        expect(() => result = new PluginSettingsSpec(token)).not.toThrowError();
+        expect(() => result.slice(1)).not.toThrowError();
     });
 });
